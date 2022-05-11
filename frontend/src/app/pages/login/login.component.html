@@ -1,0 +1,39 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row" style="margin-top :20px;">
+      <div class="col-md-6 offset-md-3">
+        <div class="container text-center">
+          <img src="../../../assets/71814_1001055_57084_image-removebg-preview.png" style="border-radius: 8px; width: 23%; height: 23%;" alt="Exam Logo" />
+
+        </div>
+        <mat-card>
+        <h1 class="text-center">Login</h1>
+        <form (ngSubmit)="formSubmit()">
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input required [(ngModel)]="user.email" #email="ngModel" name="email" type="email" matInput placeholder="Enter Your Email" />
+            <mat-error *ngIf="email.invalid && (email.errors && email.errors['required'])"> Email is Required</mat-error>
+          </mat-form-field>
+
+          <!-- <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Number</mat-label>
+            <input [(ngModel)]="user.number" name="number" type="number" matInput placeholder="Enter Your Phone Number" />
+          </mat-form-field> -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input required [(ngModel)]="user.password" #password="ngModel" name="password" type="password" matInput placeholder="Enter Your Password" />
+            <mat-error *ngIf="password.invalid && (password.errors && password.errors['required'])"> Password is Required</mat-error>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary">Login</button>
+
+          </div>
+
+        </form>
+      </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
