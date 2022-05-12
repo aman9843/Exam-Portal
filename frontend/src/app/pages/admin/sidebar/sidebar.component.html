@@ -1,8 +1,13 @@
 <mat-card>
   <mat-action-list>
-    <div mat-subheader>Menu</div>
-    <button mat-list-item routerLink="/admin"><mat-icon mat-list-icon >home</mat-icon>Home</button>
-    <button mat-list-item routerLink="/admin/profile"><mat-icon mat-list-icon >account_box</mat-icon>Profile</button>
+    <div mat-subheader style="color: black;">Menu<mat-icon style="margin-left: 10px; color: black;" mat-list-icon>dashboard</mat-icon></div>
+    <button mat-list-item  routerLink="/admin"><mat-icon  mat-list-icon >home</mat-icon>Home</button>
+    <button  mat-list-item routerLink="/admin/profile"><mat-icon routerLinkActive="active" mat-list-icon  >account_box</mat-icon>Profile</button>
+    <button mat-list-item routerLink="/admin/categories"><mat-icon mat-list-icon routerLinkActive="active">list</mat-icon>Categories</button>
+    <button mat-list-item routerLink="/admin/addCategories"><mat-icon mat-list-icon routerLinkActive="active" >add_circle_outline</mat-icon>AddCategories</button>
+    <button mat-list-item routerLink="/admin/quizz"><mat-icon mat-list-icon routerLinkActive="active">quiz</mat-icon>Quizz</button>
+    <button mat-list-item routerLink="/admin/quizz"><mat-icon mat-list-icon routerLinkActive="active">add</mat-icon>AddQuizz</button>
+    <button mat-list-item (click)="logOut()" routerLink="/login"><mat-icon mat-list-icon routerLinkActive="active">logout</mat-icon>LogOut</button>
   </mat-action-list>
 
 </mat-card>

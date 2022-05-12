@@ -44,7 +44,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       freezeTableName: true,
-    }
+    },
+
   );
 
   // Hashing Password

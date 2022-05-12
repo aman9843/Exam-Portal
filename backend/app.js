@@ -3,6 +3,7 @@ const cors = require('cors')
 const db = require("./models")
 const dotenv = require('dotenv')
 const userRoutes = require('./routes/userRoutes')
+const categoryRoutes = require('./routes/categoryRoutes')
 
 
 
@@ -21,6 +22,7 @@ dotenv.config({path:'./config/config.env'})
 
 
 app.use('/api/users',userRoutes)
+app.use('/api/category',categoryRoutes)
 
 app.get ('/',(req,res) => {
     res.send("App is running")

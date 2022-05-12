@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="user">
   <h2>Profile Details</h2>
   <mat-card-content>
     <div class="bootstrap-wrapper">
@@ -9,7 +9,7 @@
            alt=""
            class="profile-image"
           >
-         <h1 style="margin-top: 10px">Damon Salvatore</h1>
+         <h1 style="margin-top: 10px">{{user.name}}</h1>
         </div>
 
         <div class="row">
@@ -18,22 +18,21 @@
 
               <tr>
                 <td>Email</td>
-                <td>damon@gmail.com</td>
+                <td>{{user.email}}</td>
               </tr>
-
               <tr>
                 <td>Admin</td>
-                <td>True</td>
+                <td>{{user.isAdmin}}</td>
               </tr>
               <tr>
                 <td>Status</td>
-                <td>Active</td>
+                <td>{{user.enabled === true ? "Active" : "Non Active"}}</td>
               </tr>
 
 
             </table>
 
-            <!-- https://github.com/aman9843/ExamPortal-Angular.git -->
+
 
 
           </div>

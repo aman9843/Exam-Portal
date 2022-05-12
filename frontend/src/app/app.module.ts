@@ -26,6 +26,8 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoriesComponent } from './pages/admin/add-categories/add-categories.component';
 
 
 
@@ -46,6 +48,8 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
     SidebarComponent,
     ProfileComponent,
     WelcomeComponent,
+    ViewCategoriesComponent,
+    AddCategoriesComponent,
 
 
 

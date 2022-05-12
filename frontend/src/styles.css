@@ -6,6 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
  background-position: center;
  background-repeat: no-repeat;
  background-size: cover;
+ 
 
 }
 
@@ -23,4 +24,7 @@ a {
   background-color: #E0FFFF;
 
 
+}
+.active {
+  color: red;
 }

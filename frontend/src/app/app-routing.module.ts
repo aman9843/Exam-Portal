@@ -10,6 +10,8 @@ import { AdminGuard } from './services/admin.guard';
 import { UserGuard } from './services/user.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoriesComponent } from './pages/admin/add-categories/add-categories.component';
 
 const routes: Routes = [
 
@@ -37,16 +39,29 @@ const routes: Routes = [
    path:"admin",
    component:DashboardComponent,
    canActivate:[AdminGuard],
+
    children:[
      {
        path:'',
-       component:WelcomeComponent
+       component:WelcomeComponent,
+       pathMatch:'full'
 
      },
      {
        path:'profile',
-       component:ProfileComponent
+       component:ProfileComponent,
+       pathMatch:'full'
      },
+     {
+        path:'categories',
+        component:ViewCategoriesComponent,
+        pathMatch:'full'
+     },
+     {
+          path:'addCategories',
+          component:AddCategoriesComponent,
+          pathMatch:'full'
+     }
    ]
   },
   {

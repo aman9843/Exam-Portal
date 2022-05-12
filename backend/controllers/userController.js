@@ -53,6 +53,7 @@ const login = asyncHandler(async(req,res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      enabled:user.enabled,
       token: generateToken(user.id)
     });
   } else {
@@ -74,6 +75,7 @@ const getUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      enabled:user.enabled
     });
   } else {
     res.status(404);
@@ -82,6 +84,41 @@ const getUser = asyncHandler(async (req, res) => {
 });
 
 
+// delete users
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findByPk(req.params.id);
+
+  if (user) {
+    await user.destroy();
+    res.json({ message: "User Removed" });
+  } else {
+    res.status(404);
+    throw new Error();
+  }
+});
 
 
-module.exports = {registerNewUser,login,getUser}
+
+// update user by id via admin
+const updateUserById = asyncHandler(async (req, res) => {
+  const user = await User.findByPk(req.user.id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.isAdmin = req.body.isAdmin;
+  }
+
+  const updatedUser = await user.save();
+
+  res.json({
+    id: updatedUser.id,
+    name: updatedUser.name,
+    eamil: updatedUser.email,
+    isAdmin: updatedUser.isAdmin,
+  });
+});
+
+
+
+module.exports = {registerNewUser,login,getUser,deleteUser,updateUserById}
