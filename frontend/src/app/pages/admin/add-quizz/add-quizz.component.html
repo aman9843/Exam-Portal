@@ -1,0 +1,98 @@
+<mat-card style="margin-top: 20px">
+  <h1 mat-subheader>Add Quizz<mat-icon style="margin-left:10px;" color="primary">quiz</mat-icon></h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form (ngSubmit)="quizzSubmit()">
+          <mat-form-field class="width" appearance="fill">
+            <mat-label>Enter The Title</mat-label>
+            <input
+              autofocus
+              required
+              #title="ngModel"
+              [(ngModel)]="quizzData.title"
+              type="text"
+              name="title"
+              matInput
+              placeholder="Enter your Title"
+            />
+            <mat-error *ngIf="title.invalid && (title.errors && title.errors['required'])"> Title is Required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="width" appearance="fill">
+            <mat-label>Enter The Description</mat-label>
+            <textarea
+              autofocus
+              required
+              #description="ngModel"
+              [(ngModel)]="quizzData.description"
+              type="text"
+              name="description"
+              rows="4"
+              matInput
+              placeholder="Enter your Description"
+            ></textarea>
+            <mat-error *ngIf="description.invalid && (description.errors && description.errors['required'])"> Description is Required</mat-error>
+          </mat-form-field>
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="width" appearance="fill">
+                <mat-label>Max Marks</mat-label>
+                <input
+                  autofocus
+                  required
+                  #maxMarks="ngModel"
+                  [(ngModel)]="quizzData.maxMarks"
+                  type="number"
+                  name="maxMarks"
+                  matInput
+                  placeholder="Maximum Marks"
+                />
+                <mat-error *ngIf="maxMarks.invalid && (maxMarks.errors && maxMarks.errors['required'])"> maxMarks is Required</mat-error>
+
+              </mat-form-field>
+
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="width" appearance="fill">
+                <mat-label>Number Of Questions</mat-label>
+                <input
+                  autofocus
+                  required
+                  #questions="ngModel"
+                  [(ngModel)]="quizzData.numberOfQuestions"
+                  type="number"
+                  name="questions"
+                  matInput
+                  placeholder="Total Number of Questions"
+                />
+                <mat-error *ngIf="questions.invalid && (questions.errors && questions.errors['required'])"> questions is Required</mat-error>
+              </mat-form-field>
+
+            </div>
+          </div>
+
+             <mat-label >Publish Status</mat-label>
+          <mat-slide-toggle color="primary" name="enabled" style="margin-left: 10px;" [checked]="false" [(ngModel)]="quizzData.enabled"></mat-slide-toggle>
+          <br/>
+
+          <mat-form-field class="width" appearance="fill" style="margin-top: 20px;">
+            <mat-label >Select Category</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let c of categories" [value]="c.id" >
+                {{c.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-card-actions class="text-center">
+            <button type="submit" mat-raised-button color="primary">Upload</button>
+          </mat-card-actions>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</mat-card>
+<app-scroll></app-scroll>
+

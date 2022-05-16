@@ -5,20 +5,16 @@ module.exports = (sequelize, DataTypes) => {
       title: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: [1, 10],
-        },
+      
       },
 
       description: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: [2, 100],
-        },
+        
       },
       maxMarks: {
-        type: DataTypes.INTEGER(5),
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
 
@@ -30,6 +26,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         defaultValue: true,
       },
+
+      // categoryId : {
+      //   type:DataTypes.INTEGER,
+      //   references:{
+      //     model:{
+      //       tableName:'categories',
+      //       schema:'static'
+      //     },
+      //      key:'id'
+      //   },
+      //   allowNull:false
+      // }
     },
     {
       freezeTableName: true,

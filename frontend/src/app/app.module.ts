@@ -28,6 +28,14 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoriesComponent } from './pages/admin/add-categories/add-categories.component';
+import { ViewQuizzComponent } from './pages/admin/view-quizz/view-quizz.component';
+import { AddQuizzComponent } from './pages/admin/add-quizz/add-quizz.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { ScrollComponent } from './components/scroll/scroll.component';
+import { UpdateQuizzComponent } from './pages/admin/update-quizz/update-quizz.component';
+import { QuestionsComponent } from './pages/admin/questions/questions.component';
+
 
 
 
@@ -50,6 +58,11 @@ import { AddCategoriesComponent } from './pages/admin/add-categories/add-categor
     WelcomeComponent,
     ViewCategoriesComponent,
     AddCategoriesComponent,
+    ViewQuizzComponent,
+    AddQuizzComponent,
+    ScrollComponent,
+    UpdateQuizzComponent,
+    QuestionsComponent,
 
 
 
@@ -71,7 +84,9 @@ import { AddCategoriesComponent } from './pages/admin/add-categories/add-categor
     FormsModule,
     HttpClientModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule,
 
   ],
   providers: [authInterceptorProvider],

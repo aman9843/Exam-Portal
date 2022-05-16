@@ -1,15 +1,24 @@
-<mat-card>
-  <mat-list>
-    <h1 mat-subheader>All Categories<mat-icon color="primary">list</mat-icon></h1>
-    <mat-list-item *ngFor="let c of categories">
-      <mat-icon mat-list-icon>folder</mat-icon>
-      <div mat-line>{{c.title}}</div>
-      <div mat-line>{{c.description}}</div>
-      <mat-divider></mat-divider>
-    </mat-list-item>
-  </mat-list>
-  <mat-card-actions class="text-center">
-    <button mat-raised-button color="primary">Add New Category</button>
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div style="margin-top: 20px">
 
-  </mat-card-actions>
-</mat-card>
+        <mat-card>
+          <mat-list>
+            <h1 mat-subheader>
+              All Categories<mat-icon color="primary">list</mat-icon>
+            </h1>
+            <mat-list-item *ngFor="let c of category">
+              <mat-icon mat-list-icon>folder</mat-icon>
+              <div mat-line>{{c.title}}</div>
+              <div mat-line>{{c.description}}</div>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-list>
+          <mat-card-actions class="text-center">
+            <button mat-raised-button routerLink="/admin/addCategories" color="primary">Add New Category</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <app-scroll></app-scroll>

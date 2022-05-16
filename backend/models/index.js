@@ -38,6 +38,21 @@ db.Users = require('./users')(sequelize,Sequelize);
 db.Categories = require('./category')(sequelize,Sequelize);
 db.Quizz=require('./quizz')(sequelize,Sequelize);
 db.Questions=require('./questions')(sequelize,Sequelize);
+db.Users.hasMany(db.Categories);
+db.Categories.belongsTo(db.Users, {
+  foreignKey:"id",
+ 
+});
+// db.Categories.hasMany(db.Quizz);
+// db.Quizz.belongsTo(db.Categories,{
+//   foreignKey:"id",
+ 
+// })
+db.Quizz.hasMany(db.Questions);
+db.Questions.belongsTo(db.Quizz,{
+  foreignKey:"id",
+  
+})
 
 
 module.exports = db;

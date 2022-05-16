@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 10],
+          len: [1, 20],
         },
       },
 
@@ -15,9 +15,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           min: { args: [1], msg: "Pick 0-1 please" },
-          max: { args: [5], msg: "Pick 0-5 please" },
+          max: { args: [100], msg: "Pick 0-5 please" },
         },
       },
+
+      // c_id :{
+      //   type:DataTypes.INTEGER,
+      //   allowNull:false,
+      //   foreignKey:true
+      // }
 
       
     },
