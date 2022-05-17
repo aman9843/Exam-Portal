@@ -75,7 +75,7 @@ const getUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      enabled:user.enabled
+      enabled:user.enabled,
     });
   } else {
     res.status(404);

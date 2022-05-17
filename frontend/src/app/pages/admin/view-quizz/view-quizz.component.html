@@ -9,7 +9,7 @@
 <mat-label>Status</mat-label>
 <mat-card-content>{{q.enabled === "1" ? 'Active' :'Expired'}}</mat-card-content>
   <mat-card-actions
-    ><button routerLink="/admin/questions" mat-flat-button color="primary">Questions</button
+    ><button [routerLink]="'/admin/questions/' +q.id + '/'+q.title" mat-flat-button color="primary">Questions</button
     ><button mat-stroked-button color="primary">
       Max Marks:{{q.maxMarks}}
     </button>

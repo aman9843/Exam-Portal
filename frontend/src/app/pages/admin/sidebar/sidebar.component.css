@@ -1,3 +1,16 @@
-/* ::ng-deep .mat-card {
+/* ::ng-deep .host .mat-card {
   position: fixed;
+  top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    animation: smoothScroll 1s forwards;
+
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
+    z-index: 10;
 } */
+.sidebar{
+  position: fixed;
+  animation: smoothScroll 1s forwards;
+
+}

@@ -1,12 +1,16 @@
-const e = require("express");
 const asyncHandler = require("express-async-handler");
+const { Categories } = require("../models");
 const db = require("../models");
 const Quizz = db.Quizz;
 
 // Create a New Categories
 
 const createQuizz = asyncHandler(async (req, res) => {
+
+  
   const { title, description, maxMarks, numberOfQuestions, enabled} = req.body;
+  
+
 
   const quizz = new Quizz({
     title,
@@ -14,9 +18,8 @@ const createQuizz = asyncHandler(async (req, res) => {
     maxMarks,
     numberOfQuestions,
     enabled,
-   
-   
-  });
+    
+});
 
   const createdQuizz = await quizz.save();
   if (createdQuizz) {

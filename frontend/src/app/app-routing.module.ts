@@ -16,6 +16,7 @@ import { ViewQuizzComponent } from './pages/admin/view-quizz/view-quizz.componen
 import { AddQuizzComponent } from './pages/admin/add-quizz/add-quizz.component';
 import { UpdateQuizzComponent } from './pages/admin/update-quizz/update-quizz.component';
 import { QuestionsComponent } from './pages/admin/questions/questions.component';
+import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 
 const routes: Routes = [
 
@@ -82,9 +83,13 @@ const routes: Routes = [
        pathMatch:'full'
      },
      {
-       path:'questions',
+       path:'questions/:id/:title',
        component:QuestionsComponent,
        pathMatch:'full'
+     },
+     {
+       path:'add-questions/:id',
+       component:AddQuestionsComponent
      }
 
    ]

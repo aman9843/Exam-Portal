@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const userRoutes = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/categoryRoutes')
 const quizzRoutes= require('./routes/quizzRoutes')
+const questionRoutes = require('./routes/questionsRoutes')
 
 
 
@@ -25,6 +26,7 @@ dotenv.config({path:'./config/config.env'})
 app.use('/api/users',userRoutes)
 app.use('/api/category',categoryRoutes)
 app.use('/api/quizz',quizzRoutes)
+app.use('/api/questions',questionRoutes)
 
 app.get ('/',(req,res) => {
     res.send("App is running")

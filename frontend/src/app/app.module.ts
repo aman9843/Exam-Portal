@@ -35,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ScrollComponent } from './components/scroll/scroll.component';
 import { UpdateQuizzComponent } from './pages/admin/update-quizz/update-quizz.component';
 import { QuestionsComponent } from './pages/admin/questions/questions.component';
+import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 
 
 
@@ -63,6 +64,7 @@ import { QuestionsComponent } from './pages/admin/questions/questions.component'
     ScrollComponent,
     UpdateQuizzComponent,
     QuestionsComponent,
+    AddQuestionsComponent,
 
 
 

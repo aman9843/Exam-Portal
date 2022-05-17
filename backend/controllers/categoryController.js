@@ -1,5 +1,4 @@
 const asyncHandler = require("express-async-handler");
-
 const db = require("../models");
 const Category = db.Categories;
 const User = db.Users;
@@ -7,11 +6,14 @@ const User = db.Users;
 // Create a New Categories
 
 const createCategory = asyncHandler(async (req, res) => {
-  const { title, description } = req.body;
-
+  const user = await User.findByPk(req.user.id);
+  const { title, description} = req.body;
+  
   const category = new Category({
     title,
     description,
+    UserId:user.id
+   
   });
 
   const createdCategory = await category.save();
