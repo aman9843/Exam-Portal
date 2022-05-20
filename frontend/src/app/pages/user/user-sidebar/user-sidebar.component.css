@@ -1,0 +1,5 @@
+.sidebar{
+  position: fixed;
+  animation: smoothScroll 1s forwards;
+
+}

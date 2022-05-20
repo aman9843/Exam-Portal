@@ -36,6 +36,12 @@ import { ScrollComponent } from './components/scroll/scroll.component';
 import { UpdateQuizzComponent } from './pages/admin/update-quizz/update-quizz.component';
 import { QuestionsComponent } from './pages/admin/questions/questions.component';
 import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
+import { UpdateQuestionsComponent } from './pages/admin/update-questions/update-questions.component';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
+import { LoadQuizzComponent } from './pages/user/load-quizz/load-quizz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component'
 
 
 
@@ -65,6 +71,11 @@ import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions
     UpdateQuizzComponent,
     QuestionsComponent,
     AddQuestionsComponent,
+    UpdateQuestionsComponent,
+    UserSidebarComponent,
+    LoadQuizzComponent,
+    InstructionsComponent,
+    StartComponent,
 
 
 
@@ -89,6 +100,8 @@ import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions
     MatTableModule,
     MatSlideToggleModule,
     MatSelectModule,
+    CKEditorModule
+
 
   ],
   providers: [authInterceptorProvider],

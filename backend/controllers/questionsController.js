@@ -5,15 +5,21 @@ const Questions = db.Questions;
 // Create a New Categories
 
 const createQuestion = asyncHandler(async (req, res) => {
-  const {content,answers,option1,option2,option3,option4} = req.body;
+  const { content, answers, option1, option2, option3, option4 } = req.body;
+  const { QuizzId } = req.body;
 
   const questions = new Questions({
-    content,answers,option1,option2,option3,option4
-   
-   
+    content,
+    answers,
+    option1,
+    option2,
+    option3,
+    option4,
+    QuizzId,
   });
 
   const createdQuestions = await questions.save();
+
   if (createdQuestions) {
     res.status(201).json(createdQuestions);
   } else {
@@ -55,27 +61,37 @@ const deleteQuestions = asyncHandler(async (req, res) => {
 // Update a Category
 
 const updateQuestions = asyncHandler(async (req, res) => {
-  const {content,answers,option1,option2,option3,option4} = req.body;
+  const { content, answers, option1, option2, option3, option4 } = req.body;
   const questions = await Questions.findByPk(req.params.id);
 
   if (questions) {
     questions.content = content;
     questions.answers = answers;
     questions.option1 = option1;
-    questions.option2 =option2;
+    questions.option2 = option2;
     questions.option3 = option3;
     questions.option4 = option4;
-  
 
-  const updateQuestions = await questions.save();
-  res.status(201).json(updateQuestions);
-
-
+    const updateQuestions = await questions.save();
+    res.status(201).json(updateQuestions);
   } else {
-    res.status(401)
-    throw new Error ("Questions not Found")
+    res.status(401);
+    throw new Error("Questions not Found");
   }
-})
+});
+
+//get Question  by QuizzId
+const getQuestionsByCategoryId = asyncHandler(async (req, res) => {
+  const question = await Questions.findAll({
+    where: { QuizzId: req.params.id },
+  });
+  if (question) {
+    res.json(question);
+  } else {
+    res.status(404);
+    throw new Error("Question Not Found");
+  }
+});
 
 module.exports = {
   createQuestion,
@@ -83,4 +99,5 @@ module.exports = {
   getQuestionsById,
   deleteQuestions,
   updateQuestions,
+  getQuestionsByCategoryId,
 };

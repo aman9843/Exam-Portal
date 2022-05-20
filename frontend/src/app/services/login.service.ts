@@ -41,7 +41,7 @@ export class LoginService {
 // log out to remove data
   public logOut() {
     localStorage.removeItem('token')
-    localStorage.removeItem('user')
+    localStorage.removeItem('user') 
       return true;
 
   }

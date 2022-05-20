@@ -78,8 +78,8 @@
 
           <mat-form-field class="width" appearance="fill" style="margin-top: 20px;">
             <mat-label >Select Category</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let c of categories" [value]="c.id" >
+            <mat-select name="category" [(ngModel)]="quizzData.CategoryId">
+              <mat-option *ngFor="let c of categories" [value]="c.id">
                 {{c.title}}
               </mat-option>
             </mat-select>
@@ -94,5 +94,6 @@
     </div>
   </div>
 </mat-card>
+
 <app-scroll></app-scroll>
 

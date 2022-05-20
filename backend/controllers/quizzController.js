@@ -8,7 +8,7 @@ const Quizz = db.Quizz;
 const createQuizz = asyncHandler(async (req, res) => {
 
   
-  const { title, description, maxMarks, numberOfQuestions, enabled} = req.body;
+  const { title, description, maxMarks, numberOfQuestions, enabled,CategoryId} = req.body;
   
 
 
@@ -18,6 +18,7 @@ const createQuizz = asyncHandler(async (req, res) => {
     maxMarks,
     numberOfQuestions,
     enabled,
+    CategoryId
     
 });
 
@@ -84,10 +85,25 @@ const updateQuizz = asyncHandler(async (req, res) => {
   }
 })
 
+
+//get Quizz by CategoryId
+const getQuizzByCategoryId = asyncHandler(async (req, res) => {
+  const quizz = await Quizz.findAll({where:{CategoryId:req.params.id}});
+  if (quizz) {
+    res.json(quizz);
+  } else {
+    res.status(404);
+    throw new Error("Quizz Not Found");
+  }
+});
+
+
+
 module.exports = {
   createQuizz,
   getAllQuizz,
   getQuizzById,
   deleteQuizz,
   updateQuizz,
+  getQuizzByCategoryId
 };

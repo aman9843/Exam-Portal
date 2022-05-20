@@ -38,4 +38,10 @@ export class QuizzService {
   public updateQuiz(id:any,quizz:any) {
     return this.http.put(`${baseUrl}/api/quizz/quizz/${id}`,quizz);
   }
+
+
+  //get quizz on basis of Category
+  public getQuizzByCategoryId(id:any) {
+    return this.http.get(`${baseUrl}/api/quizz/category/${id}`)
+  }
 }

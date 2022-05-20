@@ -12,11 +12,16 @@ import Swal from 'sweetalert2';
 export class AddQuizzComponent implements OnInit {
   categories: any;
   quizzData = {
+
     title: '',
     description: '',
     maxMarks: '',
     numberOfQuestions: '',
     enabled: true,
+    CategoryId:'',
+
+
+
   };
 
   constructor(private cat: CategoriesService, private quizz: QuizzService, private router:Router) {}
@@ -56,7 +61,8 @@ export class AddQuizzComponent implements OnInit {
           maxMarks: '',
           numberOfQuestions: '',
           enabled: true,
-         };
+          CategoryId:''
+};
         console.log(data);
          Swal.fire('Congratulations!', 'Your Data Have Been Added!', 'success');
          this.router.navigate(['/admin/viewQuizz'])

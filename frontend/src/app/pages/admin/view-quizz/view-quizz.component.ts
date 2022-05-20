@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./view-quizz.component.css']
 })
 export class ViewQuizzComponent implements OnInit {
-  
+
   quiz:any;
 
   constructor(private quizz:QuizzService) { }
