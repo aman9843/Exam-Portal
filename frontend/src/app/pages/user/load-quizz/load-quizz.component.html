@@ -22,7 +22,8 @@
             <button mat-stroked-button color="primary" style="margin-left:8px">M.M:{{q.maxMarks}}</button>
           </mat-card-actions>
           <mat-card-actions>
-            <button mat-raised-button color="primary">View</button>
+            <button mat-raised-button [routerLink]="'/user/instructions/'+q.id"
+             color="primary">View</button>
             <button mat-raised-button [routerLink]="'/user/instructions/'+q.id" color="accent">Start</button>
           </mat-card-actions>
 

@@ -17,11 +17,6 @@ module.exports = (sequelize, DataTypes) => {
             len: [1, 100],
           },
         },
-        image: {
-          type: DataTypes.STRING,
-         
-        },
-
         option1:{
             type: DataTypes.STRING,
         },

@@ -10,82 +10,139 @@ import Swal from 'sweetalert2';
   styleUrls: ['./start.component.css'],
 })
 export class StartComponent implements OnInit {
-  id:any
-  question:any
-  marksGot =0;
+  id: any;
+  question: any;
+  marksGot = 0;
   correctAnswers = 0;
   attemp = 0;
-  constructor(private locationst: LocationStrategy , private questions:QuestionsService, private route:ActivatedRoute) {}
+  maxMarks=100;
+  timer:any;
+  isSubmit=false;
+  constructor(
+    private locationst: LocationStrategy,
+    private questions: QuestionsService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-
     this.preventBack();
-    this.id = this.route.snapshot.params['id']
+    this.id = this.route.snapshot.params['id'];
     console.log(this.id);
     this.loadQuestions();
   }
 
-
   loadQuestions() {
-    this.questions.getQuestionsByCategoryId(this.id).subscribe((data:any) => {
-      console.log(data)
-      this.question= data
+    this.questions.getQuestionsByCategoryId(this.id).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.question = data;
+        this.timer = this.question.length * 10 *60;
 
-      this.question.forEach((q:any) => {
-        q['givenAnswers'] = ''
+        this.question.forEach((q:any) => {
+          q['givenAnswers'] = '';
+        });
 
-      });
+        console.log(this.question);
+        this.startTimer();
+      },
 
-      console.log(this.question)
-    },
-
-    (error) => {
-      console.log(error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'No Data TO SHow',
-      });
-
-
-    },
-
-
-
-    )
-  }
-
-  preventBack() {
-    history.pushState(null, location.href);
-    this.locationst.onPopState(() =>
-      history.pushState(null,location.href)
+      (error) => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No Data TO SHow',
+        });
+      }
     );
   }
 
+
+
+// Prevent Back Button
+  preventBack() {
+    history.pushState(null, location.href);
+    this.locationst.onPopState(() => history.pushState(null, location.href));
+  }
+
+
+
+
+// Submit
   submitQuiz() {
     Swal.fire({
-      title: 'Are you sure?',
+      title: 'Are you sure you want to submit?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Yes',
     }).then((e) => {
-      if(e.isConfirmed) {
-        this.question.forEach((q:any) => {
-          if(q.givenAnswers == q.answer) {
-            this.correctAnswers++;
-            let marksSingle =
-            this.question[0].maxMarks/this.question.length;
-            this.marksGot += marksSingle
-          }
-        });
-
-        console.log("Correct Answers:"+this.correctAnswers);
-        console.log("Marks Got:"+ this.marksGot)
+      if (e.isConfirmed) {
+        this.isSubmit = true;
+        this.submitDirect();
       }
-    })
-  }
-}
 
+
+
+      console.log('Correct Answers:' + this.correctAnswers);
+      console.log('Marks Got:' + this.marksGot);
+      console.log("Attempt", this.attemp)
+    });
+
+
+
+  }
+
+// Set Time FOr Quiz
+  startTimer() {
+    let t:any = window.setInterval(() => {
+
+
+      if(this.timer <= 0) {
+        this.submitDirect();
+        clearInterval(t);
+      } else {
+        this.timer--;
+      }
+    },1000)
+  }
+
+
+  // Format it according to min & Sec
+  formatTime() {
+    let m = Math.floor(this.timer/60);
+    let s = this.timer - m *60;
+    return `${m} min: ${s} sec`
+  }
+
+
+
+  // Directly Submit When Quiz is over
+  submitDirect(){
+    this.question.forEach((q: any) => {
+      if (q.givenAnswers == q.answers) {
+        this.correctAnswers++;
+        let marksSingle =
+        this.maxMarks / this.question.length;
+        this.marksGot = marksSingle+ this.marksGot;
+
+      }
+
+      if(q.givenAnswers.trim() !== '') {
+        this.attemp++;
+      }
+
+    });
+
+  }
+
+  savePdf(){
+    window.print()
+  }
+
+
+  
+
+}

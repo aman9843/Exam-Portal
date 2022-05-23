@@ -1,62 +1,144 @@
-<div class="bootstrap-wrapper">
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
-        <h3>Instructions</h3>
+        <mat-card style="margin-top: 80px;">
+          <mat-card-content>
+            <h3>Instructions:</h3>
+            <ul>
+              <li><b>Do not Refresh the Page Otherwise New Question's will appear</b></li>
+              <li><b>Do Not Swicth The Tab</b></li>
+              <li><b>You Will Not able to go back after switching to this tab</b></li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
       </div>
 
+      <div class="col-md-8">
+        <ng-container *ngIf="question">
+          <h1 style="margin-top: 20px" class="text-center">
+            On Going QuizId <b>{{ question[0].QuizzId }}</b>
+          </h1>
+        </ng-container>
+        <mat-card
+          *ngFor="let q of question; let i = index"
+          style="margin-top: 20px"
+        >
+          <mat-card-content>
+            <p>
+              <b>Q}{{ i + 1 }}</b>
+              <span style="margin-left: 10px" [innerHtml]="q.content"></span>
+            </p>
+            <mat-divider></mat-divider>
 
-    <div class="col-md-8 ">
-      <ng-container *ngIf="question">
-        <h1 style="margin-top: 20px" class="text-center">
-          On Going QuizId <b>{{ question[0].QuizzId }}</b>
-        </h1>
-      </ng-container>
-      <mat-card *ngFor="let q of question; let i = index" style="margin-top:20px;" >
-        <mat-card-content>
-          <p> <b>Q}{{i + 1}}</b> <span style="margin-left: 10px;" [innerHtml] ='q.content'></span></p>
-          <mat-divider></mat-divider>
+            <mat-divider></mat-divider>
 
-          <br/>
+            <div class="row">
+              <div class="col-md-6">
+                <input
+                  type="radio"
+                  [value]="q.option1"
+                  name="{{ i }}"
+                  [(ngModel)]="q.givenAnswers"
+                />
+                {{ q.option1 }}
+              </div>
 
-          <div class="row">
-            <div class="col-md-6">
-
-              <input type="radio"
-               [value]= "q.option1" name="i" [(ngModel)]="q.givenAnswers"/>
-                 {{q.option1}}
+              <div class="col-md-6">
+                <input
+                  type="radio"
+                  [value]="q.option2"
+                  name="{{ i }}"
+                  [(ngModel)]="q.givenAnswers"
+                />
+                {{ q.option2 }}
+              </div>
+              <div class="col-md-6" style="margin-top: 20px">
+                <input
+                  type="radio"
+                  [value]="q.option3"
+                  name="{{ i }}"
+                  [(ngModel)]="q.givenAnswers"
+                />
+                {{ q.option3 }}
+              </div>
+              <div class="col-md-6" style="margin-top: 20px">
+                <input
+                  type="radio"
+                  [value]="q.option4"
+                  name="{{ i }}"
+                  [(ngModel)]="q.givenAnswers"
+                />
+                {{ q.option4 }}
+              </div>
             </div>
-
-            <div class="col-md-6">
-              <input type="radio"
-              [value]= "q.option2" name="i" [(ngModel)]="q.givenAnswers" >
-                {{q.option2}}
-
-
-            </div>
-            <div class="col-md-6" style="margin-top: 20px;">
-              <input type="radio"
-              [value]= "q.option3" name="i" [(ngModel)]="q.givenAnswers">
-                {{q.option3}}
-
-
-            </div>
-            <div class="col-md-6" style="margin-top: 20px;">
-              <input type="radio"
-              [value]= "q.option4" name="i" [(ngModel)]="q.givenAnswers">
-                {{q.option4}}
-
-
-            </div>
-          </div>
-        </mat-card-content>
-
-      </mat-card>
-      <div class="container text-center" style="margin-top: 20px;">
-        <button type="submit" (click)="submitQuiz()" mat-raised-button color="primary">Submit</button>
+          </mat-card-content>
+        </mat-card>
+        <div class="container text-center" style="margin-top: 20px">
+          <button
+            type="submit"
+            (click)="submitQuiz()"
+            mat-raised-button
+            color="primary"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <mat-card style="margin-top: 80px">
+          <mat-card-header>
+            <mat-card-title> Progress </mat-card-title>
+            <mat-card-subtitle>
+              Quizz Will Automatically Submitted when the time proceeds:
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="text-center">
+            <b>{{ formatTime() }}</b>
+            <mat-spinner
+              mode="determinate"
+              [value]="(timer / (this.question.length * 10 * 60)) * 100"
+              style="margin: auto"
+            ></mat-spinner>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
-    <div class="col-md-2"></div>
   </div>
 </div>
+
+<!-- Result -->
+<div class="bootstrap-wrapper" *ngIf="isSubmit">
+  <div class="row" style="margin-top: 40px">
+    <div class="col-md-6 offset-md-3">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Quiz Result: </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <h2>Marks Got: <b>{{ marksGot }}</b></h2>
+          <h2>Correct Answers: <b>{{ correctAnswers }}</b></h2>
+          <h2>Attempted Questions: <b> {{ attemp }}</b>
+           </h2>
+
+          </mat-card-content>
+
+        <mat-card-actions class="text-center">
+          <button (click)="savePdf()" mat-raised-button color="primary">
+            Print
+          </button>
+          <button mat-raised-button color="accent" routerLink="/user/0">
+            Home
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <h1 class="text-center">
+        {{
+          marksGot > 40
+            ? "Congratulations! You Have Cleared This Exam.. ;"
+            : "Sorry! Better Luck Next Time..."
+        }}
+      </h1>
+    </div>
+  </div>
 </div>

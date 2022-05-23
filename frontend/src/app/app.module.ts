@@ -42,8 +42,9 @@ import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.com
 import { LoadQuizzComponent } from './pages/user/load-quizz/load-quizz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component'
-
-
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 
@@ -100,7 +101,13 @@ import { StartComponent } from './pages/user/start/start.component'
     MatTableModule,
     MatSlideToggleModule,
     MatSelectModule,
-    CKEditorModule
+    CKEditorModule,
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule ,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
 
 
   ],
