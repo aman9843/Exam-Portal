@@ -93,6 +93,8 @@
                   />
                   <mat-error *ngIf="option4.invalid && (option4.errors && option4.errors['required'])"> option4 is Required</mat-error>
                 </mat-form-field>
+                <mat-label>Premium Questions</mat-label>
+                <mat-slide-toggle color="primary" name="premium" style="margin-left: 10px;" [checked]="false" [(ngModel)]="question.premium"></mat-slide-toggle>
               </div>
             </div>
             <mat-form-field class="width">

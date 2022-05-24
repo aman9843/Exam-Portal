@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         defaultValue: true,
       },
+      premium:{
+        type: DataTypes.STRING,
+        defaultValue:true,
+      }
 
       // categoryId : {
       //   type:DataTypes.INTEGER,

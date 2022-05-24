@@ -17,59 +17,62 @@
         </button>
       </div>
 
-        <mat-card
-          *ngFor="let q of question; let i = index"
-          style="margin-top: 20px"
-        >
-          <mat-card-content>
-            <p>
-              <b>Q-{{ i + 1 }}}</b>
-              <span style="margin-left: 20px" [innerHTML]="q.content"></span>
-            </p>
+      <mat-card
+        *ngFor="let q of question; let i = index"
+        style="margin-top: 20px"
+      >
+        <mat-card-content>
+          <p>
+            <mat-icon class="text-center" style="color: #D4AF37 ;" *ngIf="q.premium == true"
+              >workspace_premium</mat-icon
+            >
+            <b>Q-{{ i + 1 }}} </b>
 
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-6">
-                  <p>
-                    1)<b> {{ q.option1 }}</b>
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <p>
-                    2)<b> {{ q.option2 }}</b>
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <p>
-                    3)<b> {{ q.option3 }}</b>
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <p>
-                    4)<b>{{ q.option4 }}</b>
-                  </p>
-                </div>
+            <span style="margin-left: 20px" [innerHTML]="q.content"></span>
+          </p>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p>
+                  1)<b> {{ q.option1 }}</b>
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p>
+                  2)<b> {{ q.option2 }}</b>
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p>
+                  3)<b> {{ q.option3 }}</b>
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p>
+                  4)<b>{{ q.option4 }}</b>
+                </p>
               </div>
             </div>
-            <mat-divider></mat-divider>
-            <p>
-              Answers:<b style="margin-left: 10px">{{ q.answers }}</b>
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button (click)="onDelete(q.id)" color="warn">
-              Delete
-            </button>
-            <button
-              mat-raised-button
-              [routerLink]="'/admin/update-questions/' + q.id"
-              color="primary"
-            >
-              Update
-            </button>
-          </mat-card-actions>
-        </mat-card>
-
+          </div>
+          <mat-divider></mat-divider>
+          <p>
+            Answers:<b style="margin-left: 10px">{{ q.answers }}</b>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="onDelete(q.id)" color="warn">
+            Delete
+          </button>
+          <button
+            mat-raised-button
+            [routerLink]="'/admin/update-questions/' + q.id"
+            color="primary"
+          >
+            Update
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class ViewQuizzComponent implements OnInit {
 
   quiz:any;
+  attemp= 10;
 
   constructor(private quizz:QuizzService) { }
 
@@ -69,4 +70,5 @@ export class ViewQuizzComponent implements OnInit {
 
   }
 
+ 
 }

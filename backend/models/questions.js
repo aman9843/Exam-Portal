@@ -30,6 +30,11 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.STRING
 
         },
+
+        premium:{
+          type:DataTypes.STRING,
+          enabled:true
+        }
        
         
       },

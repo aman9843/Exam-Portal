@@ -18,7 +18,9 @@ export class AddQuizzComponent implements OnInit {
     maxMarks: '',
     numberOfQuestions: '',
     enabled: true,
+    premium:true,
     CategoryId:'',
+
 
 
 
@@ -61,6 +63,7 @@ export class AddQuizzComponent implements OnInit {
           maxMarks: '',
           numberOfQuestions: '',
           enabled: true,
+          premium:true,
           CategoryId:''
 };
         console.log(data);

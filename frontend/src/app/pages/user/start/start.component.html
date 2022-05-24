@@ -1,29 +1,37 @@
-<div class="bootstrap-wrapper" *ngIf="!isSubmit">
+<div class="bootstrap-wrapper" *ngIf="!isSubmit ">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
         <mat-card style="margin-top: 80px;">
           <mat-card-content>
-            <h3>Instructions:</h3>
+            <h3>Instructions:<mat-icon color="primary">integration_instructions</mat-icon></h3>
             <ul>
               <li><b>Do not Refresh the Page Otherwise New Question's will appear</b></li>
               <li><b>Do Not Swicth The Tab</b></li>
               <li><b>You Will Not able to go back after switching to this tab</b></li>
+              <li><mat-icon color="primary">redeem</mat-icon><b> FreeBie!!..<span>You Score 100% marks you will get Premium Quizz for free..</span></b></li>
             </ul>
           </mat-card-content>
         </mat-card>
       </div>
 
+
       <div class="col-md-8">
-        <ng-container *ngIf="question">
-          <h1 style="margin-top: 20px" class="text-center">
-            On Going QuizId <b>{{ question[0].QuizzId }}</b>
-          </h1>
-        </ng-container>
+        <h1 style="margin-top: 20px" class="text-center">
+          On Going QuizId <b>{{ question[0].QuizzId }}</b>
+        </h1>
+
+        <ng-container *ngFor="let q of question; let i = index">
+
+
         <mat-card
-          *ngFor="let q of question; let i = index"
+
           style="margin-top: 20px"
+          *ngIf="q.premium == false"
         >
+
+
+
           <mat-card-content>
             <p>
               <b>Q}{{ i + 1 }}</b>
@@ -73,7 +81,9 @@
               </div>
             </div>
           </mat-card-content>
+
         </mat-card>
+      </ng-container>
         <div class="container text-center" style="margin-top: 20px">
           <button
             type="submit"
@@ -132,13 +142,21 @@
           </button>
         </mat-card-actions>
       </mat-card>
-      <h1 class="text-center">
+      <h2 class="text-center">
         {{
-          marksGot > 40
-            ? "Congratulations! You Have Cleared This Exam.. ;"
+          marksGot == 56
+            ? "Congratulations! You Have Cleared This Exam.. "
             : "Sorry! Better Luck Next Time..."
         }}
-      </h1>
+        <mat-divider></mat-divider>
+        {{
+          marksGot == 56 ? "Hurray!! You Have unlocked our premium quizzes" : "Subscribe to our Premium Quizzes to gain better understanding & crack any exams"
+        }}
+      </h2>
+      <mat-card-actions class="text-center">
+        <button (click)="pay()" *ngIf="marksGot != 56 "  mat-raised-button color="primary">Subscribe</button>
+        <button *ngIf="marksGot == 56 " routerLink="/user/0"  mat-raised-button color="primary">Premium</button>
+      </mat-card-actions>
     </div>
   </div>
 </div>

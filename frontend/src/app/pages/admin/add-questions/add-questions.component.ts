@@ -21,6 +21,7 @@ export class AddQuestionsComponent implements OnInit {
     option2: '',
     option3: '',
     option4: '',
+    premium: true,
     answers: '',
   };
 
@@ -58,6 +59,7 @@ export class AddQuestionsComponent implements OnInit {
           option2: '',
           option3: '',
           option4: '',
+          premium: true,
           answers: '',
         };
 

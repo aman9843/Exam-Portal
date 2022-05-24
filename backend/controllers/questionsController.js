@@ -5,7 +5,7 @@ const Questions = db.Questions;
 // Create a New Categories
 
 const createQuestion = asyncHandler(async (req, res) => {
-  const { content, answers, option1, option2, option3, option4 } = req.body;
+  const { content, answers, option1, option2, option3, option4,premium } = req.body;
   const { QuizzId } = req.body;
 
   const questions = new Questions({
@@ -15,6 +15,7 @@ const createQuestion = asyncHandler(async (req, res) => {
     option2,
     option3,
     option4,
+    premium,
     QuizzId,
   });
 
@@ -61,7 +62,7 @@ const deleteQuestions = asyncHandler(async (req, res) => {
 // Update a Category
 
 const updateQuestions = asyncHandler(async (req, res) => {
-  const { content, answers, option1, option2, option3, option4 } = req.body;
+  const { content, answers, option1, option2, option3, option4,premium} = req.body;
   const questions = await Questions.findByPk(req.params.id);
 
   if (questions) {
@@ -71,6 +72,7 @@ const updateQuestions = asyncHandler(async (req, res) => {
     questions.option2 = option2;
     questions.option3 = option3;
     questions.option4 = option4;
+    questions.premium = premium;
 
     const updateQuestions = await questions.save();
     res.status(201).json(updateQuestions);

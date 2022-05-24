@@ -6,11 +6,15 @@ const Quizz = db.Quizz;
 // Create a New Categories
 
 const createQuizz = asyncHandler(async (req, res) => {
-
-  
-  const { title, description, maxMarks, numberOfQuestions, enabled,CategoryId} = req.body;
-  
-
+  const {
+    title,
+    description,
+    maxMarks,
+    numberOfQuestions,
+    enabled,
+    premium,
+    CategoryId,
+  } = req.body;
 
   const quizz = new Quizz({
     title,
@@ -18,10 +22,9 @@ const createQuizz = asyncHandler(async (req, res) => {
     maxMarks,
     numberOfQuestions,
     enabled,
-    CategoryId
-    
-});
-
+    premium,
+    CategoryId,
+  });
   const createdQuizz = await quizz.save();
   if (createdQuizz) {
     res.status(201).json(createdQuizz);
@@ -64,31 +67,29 @@ const deleteQuizz = asyncHandler(async (req, res) => {
 // Update a Category
 
 const updateQuizz = asyncHandler(async (req, res) => {
-  const {title,description,maxMarks,numberOfQuestions,enabled} = req.body;
+  const { title, description, maxMarks, numberOfQuestions, enabled, premium } =
+    req.body;
   const quizz = await Quizz.findByPk(req.params.id);
 
   if (quizz) {
     quizz.title = title;
     quizz.description = description;
     quizz.maxMarks = maxMarks;
-    quizz.numberOfQuestions =numberOfQuestions;
+    quizz.numberOfQuestions = numberOfQuestions;
     quizz.enabled = enabled;
-  
+    quizz.premium = premium;
 
-  const updateQuizz = await quizz.save();
-  res.status(201).json(updateQuizz);
-
-
+    const updateQuizz = await quizz.save();
+    res.status(201).json(updateQuizz);
   } else {
-    res.status(401)
-    throw new Error ("Quizz not Found")
+    res.status(401);
+    throw new Error("Quizz not Found");
   }
-})
-
+});
 
 //get Quizz by CategoryId
 const getQuizzByCategoryId = asyncHandler(async (req, res) => {
-  const quizz = await Quizz.findAll({where:{CategoryId:req.params.id}});
+  const quizz = await Quizz.findAll({ where: { CategoryId: req.params.id } });
   if (quizz) {
     res.json(quizz);
   } else {
@@ -97,13 +98,11 @@ const getQuizzByCategoryId = asyncHandler(async (req, res) => {
   }
 });
 
-
-
 module.exports = {
   createQuizz,
   getAllQuizz,
   getQuizzById,
   deleteQuizz,
   updateQuizz,
-  getQuizzByCategoryId
+  getQuizzByCategoryId,
 };

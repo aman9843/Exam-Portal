@@ -45,6 +45,9 @@ import { StartComponent } from './pages/user/start/start.component'
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import {MatMenuModule} from '@angular/material/menu';
+import { GooglePayButtonModule } from "@google-pay/button-angular";
+
 
 
 
@@ -104,6 +107,8 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     CKEditorModule,
     MatRadioModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
+    GooglePayButtonModule,
     NgxUiLoaderModule ,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true

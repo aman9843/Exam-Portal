@@ -1,34 +1,67 @@
 <mat-card style="margin-top: 20px" *ngFor="let q of quiz">
-  <mat-card-header >
+  <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{q.title}}</mat-card-title>
-    <mat-card-subtitle>{{q.CategoryId}}</mat-card-subtitle>
+    <mat-card-title>{{ q.title }}</mat-card-title>
+    <mat-card-subtitle>{{ q.CategoryId }}</mat-card-subtitle>
+
+      <div class="col-md-4">
+        <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"><mat-icon class="material-symbols-outlined">info</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <p mat-menu-item>First 5 Questions Are Free</p>
+          <p mat-menu-item>If You Score is 100% </p>
+          <p mat-menu-item>you will get premium Quizz for free</p>
+        </mat-menu>
+      </div>
+
+
 
   </mat-card-header>
-  <mat-card-content><p>{{q.description}}</p></mat-card-content>
-<mat-label>Status</mat-label>
-<mat-card-content>{{q.enabled === "1" ? 'Active' :'Expired'}}</mat-card-content>
+  <mat-card-content
+    ><p>{{ q.description }}</p></mat-card-content
+  >
+  <mat-label>Status</mat-label>
+  <mat-card-content>{{
+    q.enabled === "1" ? "Active" : "Expired"
+  }}</mat-card-content>
+  <mat-label
+    >Premium Quizz <span *ngIf="q.premium == true">(First 5 are free)</span></mat-label
+  >
+  <mat-card-content>{{ q.premium === "1" ? "YES" : "NO" }}</mat-card-content>
   <mat-card-actions
-    ><button [routerLink]="'/admin/questions/' +q.id + '/'+q.title" mat-flat-button color="primary">Questions</button
+    ><button
+      [routerLink]="'/admin/questions/' + q.id + '/' + q.title"
+      mat-flat-button
+      color="primary"
+    >
+      Questions</button
     ><button mat-stroked-button color="primary">
-      Max Marks:{{q.maxMarks}}
+      Max Marks:{{ q.maxMarks }}
     </button>
-    <button  mat-stroked-button color="primary">
-      Questions:{{q.numberOfQuestions}}
+    <button mat-stroked-button color="primary">
+      Questions:{{ q.numberOfQuestions }}
     </button>
-    <button mat-flat-button color="primary">
-      Attemps
-    </button>
-    <button [routerLink]="'/admin/quizz/'+q.id" mat-flat-button color="primary" style="margin-left: 15px;">
+    <button mat-flat-button color="primary">Attemps</button>
+    <button
+      [routerLink]="'/admin/quizz/' + q.id"
+      mat-flat-button
+      color="primary"
+      style="margin-left: 15px"
+    >
       Update
     </button>
-    <button mat-flat-button color="warn" (click)="deleteQuiz(q.id)" style="margin-left: 15px;">
+    <button
+      mat-flat-button
+      color="warn"
+      (click)="deleteQuiz(q.id)"
+      style="margin-left: 15px"
+    >
       Delete
     </button>
-    </mat-card-actions
-  >
+  </mat-card-actions>
 </mat-card>
-<div class="container text-center" style="margin-top: 20px;">
-  <button routerLink="/admin/addQuizz" mat-raised-button color="primary">Add Quizz</button>
+<div class="container text-center" style="margin-top: 20px">
+  <button routerLink="/admin/addQuizz" mat-raised-button color="primary">
+    Add Quizz
+  </button>
 </div>
 <app-scroll></app-scroll>
