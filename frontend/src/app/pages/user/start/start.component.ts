@@ -1,9 +1,8 @@
 import { LocationStrategy } from '@angular/common';
-import { Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component,  OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import Swal from 'sweetalert2';
-
 
 declare var Razorpay: any;
 
@@ -13,53 +12,10 @@ declare var Razorpay: any;
   styleUrls: ['./start.component.css'],
 })
 export class StartComponent implements OnInit {
-
-
-
-
-
-  options = {
-    "key": "rzp_live_boZzP5mjjMxPk4YPI91YkTCOw7K",
-    "amount": "200",
-    "name": "Aman Prasad",
-    "description": "Web Development",
-    "image": "https://example.com/your_logo",
-    "order_id": "",
-    "handler": (res: any) => {
-
-       console.log(res)
-    },
-
-
-
-  };
-
-
-  pay() {
-
-    
-    var rzp1 = new Razorpay(this.options);
-    rzp1.open();
-    rzp1.on('payment.failed', function (response: any) {
-      //this.message = "Payment Failed";
-      // Todo - store this information in the server
-      console.log(response.error.code);
-      console.log(response.error.description);
-      console.log(response.error.source);
-      console.log(response.error.step);
-      console.log(response.error.reason);
-      console.log(response.error.metadata.order_id);
-      console.log(response.error.metadata.payment_id);
-      //this.error = response.error.reason;
-    }
-    );
-  }
-
-
-
-
+  // rzp_test_kgFKFrMvXW3UtK
 
   id: any;
+  order: any;
   question: any;
   marksGot = 0;
   correctAnswers = 0;
@@ -68,12 +24,11 @@ export class StartComponent implements OnInit {
   timer: any;
   isSubmit = false;
 
-
-
   constructor(
     private locationst: LocationStrategy,
     private questions: QuestionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -175,6 +130,37 @@ export class StartComponent implements OnInit {
     window.print();
   }
 
+  // options = {
+  //   key: 'rzp_test_kgFKFrMvXW3UtK',
+  //   amount: '10000',
+  //   currency: 'INR',
+  //   name: 'Aman Prasad',
+  //   description: 'RazorPay Integration',
+  //   handler: (res: any) => {
+  //     var event = new CustomEvent('payment.success', {
+  //       detail: res,
+  //       bubbles: true,
+  //       cancelable: true,
+  //     });
+  //     window.dispatchEvent(event);
+  //   },
+  // };
+
+  subscribe() {
+    Swal.fire({
+      title: 'Are You Sure you want to subscribe?',
+      text: 'You need to pay for Premium Quizz !',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((e) => {
+      if (e.isConfirmed) {
+
+        this.router.navigate(['/subscription/'+this.id])
 
 
+       }
+    });
+  }
 }

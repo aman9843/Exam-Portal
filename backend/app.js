@@ -6,6 +6,7 @@ const userRoutes = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/categoryRoutes')
 const quizzRoutes= require('./routes/quizzRoutes')
 const questionRoutes = require('./routes/questionsRoutes')
+const orderRoutes = require('./routes/orderRoutes')
 
 
 
@@ -27,6 +28,7 @@ app.use('/api/users',userRoutes)
 app.use('/api/category',categoryRoutes)
 app.use('/api/quizz',quizzRoutes)
 app.use('/api/questions',questionRoutes)
+app.use('/api/order',orderRoutes)
 
 app.get ('/',(req,res) => {
     res.send("App is running")

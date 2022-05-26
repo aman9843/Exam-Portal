@@ -154,7 +154,7 @@
         }}
       </h2>
       <mat-card-actions class="text-center">
-        <button (click)="pay()" *ngIf="marksGot != 56 "  mat-raised-button color="primary">Subscribe</button>
+        <button *ngIf="marksGot != 56" (click)="subscribe()"  mat-raised-button color="primary">Subscribe</button>
         <button *ngIf="marksGot == 56 " routerLink="/user/0"  mat-raised-button color="primary">Premium</button>
       </mat-card-actions>
     </div>

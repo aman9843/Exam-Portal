@@ -21,6 +21,9 @@ import { UpdateQuestionsComponent } from './pages/admin/update-questions/update-
 import { LoadQuizzComponent } from './pages/user/load-quizz/load-quizz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
+import { SubscriptionComponent } from './pages/user/subscription/subscription.component';
+import { PremiumQuizzComponent } from './pages/user/premium-quizz/premium-quizz.component';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
 
 const routes: Routes = [
 
@@ -118,6 +121,11 @@ const routes: Routes = [
           path:'instructions/:id',
           component:InstructionsComponent,
           pathMatch:'full'
+        },
+        {
+          path:'userProfile',
+          component:UserProfileComponent,
+          pathMatch:'full'
         }
       ]
   },
@@ -126,6 +134,20 @@ const routes: Routes = [
      component:StartComponent,
      pathMatch:'full',
      canActivate:[UserGuard]
+  },
+  {
+    path:'subscription/:id',
+    component:SubscriptionComponent,
+    pathMatch:'full',
+    canActivate:[UserGuard]
+  },
+
+  {
+     path:'premium/:id',
+     component:PremiumQuizzComponent,
+     pathMatch:'full',
+     canActivate:[UserGuard]
+
   },
 
   {

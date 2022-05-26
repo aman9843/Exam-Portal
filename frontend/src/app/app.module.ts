@@ -46,7 +46,10 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import {MatMenuModule} from '@angular/material/menu';
-import { GooglePayButtonModule } from "@google-pay/button-angular";
+import { SubscriptionComponent } from './pages/user/subscription/subscription.component';
+import { PremiumQuizzComponent } from './pages/user/premium-quizz/premium-quizz.component';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+
 
 
 
@@ -80,6 +83,9 @@ import { GooglePayButtonModule } from "@google-pay/button-angular";
     LoadQuizzComponent,
     InstructionsComponent,
     StartComponent,
+    SubscriptionComponent,
+    PremiumQuizzComponent,
+    UserProfileComponent,
 
 
 
@@ -108,7 +114,6 @@ import { GooglePayButtonModule } from "@google-pay/button-angular";
     MatRadioModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    GooglePayButtonModule,
     NgxUiLoaderModule ,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true

@@ -47,6 +47,7 @@ db.Users = require("./users")(sequelize, Sequelize);
 db.Categories = require("./category")(sequelize, Sequelize);
 db.Quizz = require("./quizz")(sequelize, Sequelize);
 db.Questions = require("./questions")(sequelize, Sequelize);
+db.Order = require("./subscription")(sequelize,Sequelize)
 
 
 // Sequelize hasMany & Belongs to between Users & Categories
@@ -69,5 +70,18 @@ db.Quizz.hasMany(db.Questions);
 db.Questions.belongsTo(db.Quizz, {
   
 });
+
+
+
+// Sequelize hasMany & Belongs to between Order/ User & Quizz Id 
+db.Users.hasMany(db.Order);
+db.Order.belongsTo(db.Users, {
+   
+})
+
+db.Quizz.hasMany(db.Order);
+db.Order.belongsTo(db.Quizz, {
+  
+})
 
 module.exports = db;

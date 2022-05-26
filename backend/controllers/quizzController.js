@@ -1,5 +1,4 @@
 const asyncHandler = require("express-async-handler");
-const { Categories } = require("../models");
 const db = require("../models");
 const Quizz = db.Quizz;
 

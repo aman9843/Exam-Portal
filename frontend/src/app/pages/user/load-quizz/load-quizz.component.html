@@ -1,13 +1,14 @@
 <div class="bootstrap-wrapper">
   <div class="container-fluid">
-    <h1 class="text-center">All Quizzes</h1>
+    <h1 class="text-center" *ngIf="id == 0">All Quizz</h1>
+    <h1 class="text-center" *ngIf="id != 0">{{quizz[0].title}}</h1>
     <div class="row" style="margin-top: 20px;" *ngIf="quizz">
      <div class="col-md-4" *ngFor="let q of quizz ">
         <mat-card style="margin-bottom: 20px;">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>
-              {{q.title}} 
+              {{q.title}}
             </mat-card-title>
             <mat-card-subtitle>
               {{q.CategoryId}}

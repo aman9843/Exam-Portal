@@ -20,11 +20,7 @@ export class AddQuizzComponent implements OnInit {
     enabled: true,
     premium:true,
     CategoryId:'',
-
-
-
-
-  };
+};
 
   constructor(private cat: CategoriesService, private quizz: QuizzService, private router:Router) {}
 
