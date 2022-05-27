@@ -5,6 +5,11 @@ module.exports = (sequelize, DataTypes) => {
       amount: {
         type: DataTypes.INTEGER,
       },
+
+      premiumCourse: {
+        type: DataTypes.STRING,
+        defaultValue:false
+      }
     },
     {
       freezeTableName: true,
