@@ -79,9 +79,9 @@ db.Order.belongsTo(db.Users, {
    
 })
 
-db.Quizz.hasMany(db.Order);
-db.Order.belongsTo(db.Quizz, {
+// db.Quizz.hasMany(db.Order);
+// db.Order.belongsTo(db.Quizz, {
   
-})
+// })
 
 module.exports = db;

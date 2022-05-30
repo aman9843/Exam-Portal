@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuizzService } from 'src/app/services/quizz.service';
+import { PaymentServiceService } from 'src/app/services/payment-service.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,11 +12,15 @@ import Swal from 'sweetalert2';
 export class LoadQuizzComponent implements OnInit {
   id: any;
   quizz:any;
-  cid:any
+  cid:any;
+  orders:any
 
-  constructor(private route: ActivatedRoute, private quiz: QuizzService) {}
+  constructor(private route: ActivatedRoute, private quiz: QuizzService, private order:PaymentServiceService) {}
 
   ngOnInit(): void {
+
+     this.orders=this.order.userLoggedIn()
+     console.log(this.orders)
 
     this.route.params.subscribe((params) => {
       this.id = params['id'];

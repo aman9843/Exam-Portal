@@ -1,16 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
- background-image: url("./assets/back.jpeg");
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
- background-attachment: fixed;
-
-
+html,
+body {
+  height: 100%;
 }
-
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url("./assets/back.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 a {
   text-decoration: none;
@@ -20,16 +22,31 @@ a {
   text-align: center;
 }
 .mat-card {
-  background-color: #E0FFFF;
-
-
+  background-color: #e0ffff;
 }
 .mat-toolbar {
-  background-color: #E0FFFF;
-
-
+  background-color: #e0ffff;
 }
 .active {
   color: red;
 }
 
+.mat-icon-button:focus {
+  outline: none !important;
+}
+
+.mat-button:focus {
+  outline: none !important;
+}
+ .mat-menu-item:focus {
+   outline: none !important;
+ }
+
+
+.mat-stroked-button :focus{
+  outline: none !important;
+ }
+
+.mat-raised-button :focus {
+   outline: none !important
+ }

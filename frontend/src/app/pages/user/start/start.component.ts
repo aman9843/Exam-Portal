@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Component,  OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaymentServiceService } from 'src/app/services/payment-service.service';
 import { QuestionsService } from 'src/app/services/questions.service';
 import Swal from 'sweetalert2';
 
@@ -28,13 +29,15 @@ export class StartComponent implements OnInit {
     private locationst: LocationStrategy,
     private questions: QuestionsService,
     private route: ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private orders:PaymentServiceService
   ) {}
 
   ngOnInit(): void {
     this.preventBack();
     this.id = this.route.snapshot.params['id'];
     console.log(this.id);
+    this.order =this.orders.userLoggedIn()
     this.loadQuestions();
   }
 
@@ -157,7 +160,7 @@ export class StartComponent implements OnInit {
     }).then((e) => {
       if (e.isConfirmed) {
 
-        this.router.navigate(['/subscription/'+this.id])
+        this.router.navigate(['/subscription'])
 
 
        }

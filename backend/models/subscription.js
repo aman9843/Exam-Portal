@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 
       premiumCourse: {
         type: DataTypes.STRING,
-        defaultValue:false
+        defaultValue:true
       }
     },
     {

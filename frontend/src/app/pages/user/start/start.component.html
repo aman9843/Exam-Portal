@@ -27,14 +27,16 @@
         <mat-card
 
           style="margin-top: 20px"
-          *ngIf="q.premium == false"
+          *ngIf="this.order ? q : q.premium == false"
         >
 
 
 
           <mat-card-content>
             <p>
-              <b>Q}{{ i + 1 }}</b>
+              <b>Q}{{ i + 1 }}</b><mat-icon class="text-center" style="color: #D4AF37 ;" *ngIf="this.order"
+              >workspace_premium</mat-icon
+            >
               <span style="margin-left: 10px" [innerHtml]="q.content"></span>
             </p>
             <mat-divider></mat-divider>
@@ -149,13 +151,16 @@
             : "Sorry! Better Luck Next Time..."
         }}
         <mat-divider></mat-divider>
-        {{
-          marksGot == 56 ? "Hurray!! You Have unlocked our premium quizzes" : "Subscribe to our Premium Quizzes to gain better understanding & crack any exams"
-        }}
+        <h2 *ngIf="!this.order">
+          {{
+            marksGot == 56 ? "Hurray!! You Have unlocked our premium quizzes" : "Subscribe to our Premium Quizzes to gain better understanding & crack any exams"
+          }}
+
+        </h2>
       </h2>
       <mat-card-actions class="text-center">
-        <button *ngIf="marksGot != 56" (click)="subscribe()"  mat-raised-button color="primary">Subscribe</button>
-        <button *ngIf="marksGot == 56 " routerLink="/user/0"  mat-raised-button color="primary">Premium</button>
+        <button *ngIf="marksGot != 56 && !this.order" (click)="subscribe()"  mat-raised-button color="primary">Subscribe</button>
+        <button *ngIf="marksGot == 56 && !this.order " routerLink="/user/0"  mat-raised-button color="primary">Premium</button>
       </mat-card-actions>
     </div>
   </div>

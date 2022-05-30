@@ -8,18 +8,20 @@
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>
-              {{q.title}}
+              {{q.title}}<mat-icon class="text-center" style="color: #D4AF37 ;" *ngIf="!this.orders"
+              >workspace_premium</mat-icon
+            >
             </mat-card-title>
-            <mat-card-subtitle>
+            <!-- <mat-card-subtitle>
               {{q.CategoryId}}
-            </mat-card-subtitle>
+            </mat-card-subtitle> -->
           </mat-card-header>
           <mat-card-content>
             <p class="desc">{{q.description}}</p>
           </mat-card-content>
           <mat-card-actions>
 
-            <button mat-stroked-button color="primary" >Quest:{{q.numberOfQuestions}}</button>
+            <button mat-stroked-button color="primary" >Quest:{{this.orders ? "20" : q.numberOfQuestions}}</button>
             <button mat-stroked-button color="primary" style="margin-left:8px">M.M:{{q.maxMarks}}</button>
           </mat-card-actions>
           <mat-card-actions>

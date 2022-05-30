@@ -15,12 +15,11 @@ var Razorpay = require("razorpay");
 const createOrder = asyncHandler(async (req, res) => {
   const user = await User.findByPk(req.user.id);
 
-  const { amount, QuizzId,premiumCourse } = req.body;
+  const { amount,premiumCourse } = req.body;
 
   const order = Order.create({
     amount,
     UserId: user.id,
-    QuizzId,
     premiumCourse,
   });
 

@@ -22,8 +22,8 @@ import { LoadQuizzComponent } from './pages/user/load-quizz/load-quizz.component
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
 import { SubscriptionComponent } from './pages/user/subscription/subscription.component';
-import { PremiumQuizzComponent } from './pages/user/premium-quizz/premium-quizz.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+
 
 const routes: Routes = [
 
@@ -122,11 +122,9 @@ const routes: Routes = [
           component:InstructionsComponent,
           pathMatch:'full'
         },
-        {
-          path:'userProfile',
-          component:UserProfileComponent,
-          pathMatch:'full'
-        }
+
+
+
       ]
   },
   {
@@ -136,19 +134,19 @@ const routes: Routes = [
      canActivate:[UserGuard]
   },
   {
-    path:'subscription/:id',
+    path:'subscription',
     component:SubscriptionComponent,
     pathMatch:'full',
     canActivate:[UserGuard]
   },
-
   {
-     path:'premium/:id',
-     component:PremiumQuizzComponent,
-     pathMatch:'full',
-     canActivate:[UserGuard]
-
+    path:'userProfile/:id',
+    component:UserProfileComponent,
+    pathMatch:'full',
+    canActivate:[UserGuard]
   },
+
+
 
   {
     path:"**",

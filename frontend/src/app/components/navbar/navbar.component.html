@@ -1,30 +1,81 @@
+<!-- <mat-toolbar>
+  <button mat-icon-button routerLink="/">
+   <mat-icon color="primary" >book</mat-icon>
+   <span style="font-size: 25px;">ExamPortal</span>
+  </button>
+
+  <span class="example-spacer">
+
+  <button mat-icon-button *ngIf="!isLoggedIn" routerLink="/login">
+    <a routerLinkActive="active"><span>Login</span></a>
+  </button>
+  <button
+    mat-icon-button
+    style="margin-left: 25px"
+   *ngIf="!isLoggedIn"
+    routerLink="/signup"
+    routerLinkActive="active"
+  >
+  Register
+  </button>
+  <button mat-icon-button *ngIf="isLoggedIn && user.isAdmin == true">
+    <a routerLink="/admin/profile"
+      ><mat-icon color="primary" aria-hidden="false">account_circle</mat-icon
+      >{{ user.name }}</a
+    >
+  </button>
+
+  <button
+    *ngIf="isLoggedIn && user.isAdmin == false"
+    style="margin-right: 10px; outline: none"
+    mat-button
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon mat-list-icon>account_circle</mat-icon>{{ user.name }}
+  </button>
+  <mat-menu #menu="matMenu" class="custom-menu">
+    <button
+      style="outline: none"
+      mat-menu-item
+      [routerLink]="'/userProfile/' + user.id">
+      Profile
+    </button>
+    <button style="outline: none" mat-menu-item>Premium Courses</button>
+  </mat-menu>
+
+  <button mat-icon-button style="margin-left: 25px">
+    <a *ngIf="isLoggedIn" (click)="logOut()" routerLink="/login"
+      ><mat-icon aria-hidden="false">logout</mat-icon></a
+    >
+  </button>
+</span>
+</mat-toolbar> -->
+
 <mat-toolbar>
-
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <a routerLink="/" ><mat-icon color= 'primary'>book</mat-icon></a>
+  <button mat-icon-button class="example-icon" routerLink="/" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu_book</mat-icon>
  </button>
- <a routerLink="/" ><span color= 'primary'>ExamPortal</span></a>
+ <span>Exam Portal</span>
  <span class="example-spacer"></span>
-
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-  <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active"><span>Login</span></a>
+ <button mat-icon-button class="example-icon favorite-icon" *ngIf="!isLoggedIn"  routerLinkActive="active" routerLink="/login" aria-label="Example icon-button with heart icon">
+   <mat-icon>login</mat-icon>
  </button>
- <button mat-icon-button class="example-icon favorite-icon" style="margin-left: 25px" aria-label="Example icon-button with heart icon" >
-  <a *ngIf="!isLoggedIn" routerLink="/signup" routerLinkActive="active"><span>Register</span></a>
+ <button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == false" [routerLink]="'userProfile/'+user.id" aria-label="Example icon-button with share icon">
+<mat-icon>account_circle_full</mat-icon>
 </button>
-<button mat-icon-button>
-  <a *ngIf="isLoggedIn && user.isAdmin == true" routerLink="/admin/profile" ><mat-icon color= 'primary'aria-hidden="false">account_circle</mat-icon>{{user.name}}</a>
+<button  mat-icon-button class="example-icon"  *ngIf="isLoggedIn && user.isAdmin == false" [routerLink]="'userProfile/'+user.id" style="margin-right: 40px;" >{{user.name}} <mat-icon class="text-center" *ngIf="this.orders[0]" style="color: #D4AF37 ;"
+              >workspace_premium</mat-icon
+            ></button>
+
+<button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == true"   routerLink="/admin/profile"  aria-label="Example icon-button with share icon">
+  <mat-icon>admin_panel_settings</mat-icon>
 </button>
+<button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == true" routerLink="/admin/profile" style="margin-right: 10px;" >{{user.name}</button>
 
-
-    <button  *ngIf="isLoggedIn && user.isAdmin == false" style="margin-right: 10px; outline: none;" mat-button [matMenuTriggerFor]="menu"><mat-icon mat-list-icon>account_circle</mat-icon>{{user.name}}</button>
-    <mat-menu  #menu="matMenu" class="custom-menu">
-      <button style="outline: none;"  mat-menu-item routerLink="/user/userProfile">Profile</button>
-      <button style="outline: none;" mat-menu-item>Premium Courses</button>
-    </mat-menu>
-
-<button  mat-icon-button  style="margin-left: 25px">
-  <a *ngIf="isLoggedIn" (click)="logOut()" routerLink="/login"><mat-icon aria-hidden="false">logout</mat-icon></a>
+ <button mat-icon-button class="example-icon" *ngIf="!isLoggedIn" routerLinkActive="active" routerLink="/signup" aria-label="Example icon-button with share icon">
+  <mat-icon>app_registration</mat-icon>
 </button>
-
+<button mat-icon-button class="example-icon" (click)="logOut()" *ngIf="isLoggedIn"  aria-label="Example icon-button with share icon">
+  <mat-icon>logout</mat-icon>
+</button>
 </mat-toolbar>

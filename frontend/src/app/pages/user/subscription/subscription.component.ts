@@ -5,7 +5,6 @@ import { PaymentServiceService } from 'src/app/services/payment-service.service'
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
 
-declare var Razorpay: any;
 @Component({
   selector: 'app-subscription',
   templateUrl: './subscription.component.html',
@@ -15,9 +14,10 @@ export class SubscriptionComponent implements OnInit {
   id: any;
   user: any;
   order = {
-    QuizzId: '',
     amount: '',
+    premiumCourse: true,
   };
+  orderss: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,27 +26,18 @@ export class SubscriptionComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
-    this.order.QuizzId = this.id;
-    this.user = this.login.getUser();
-    console.log(this.user);
-  }
+  handler: any = null;
 
-  options = {
-    key: 'rzp_test_kgFKFrMvXW3UtK',
-    amount: '',
-    currency: 'INR',
-    name: '',
-    description: 'RazorPay Payment',
-    order_id: '',
-    handler: function (response: any) {
-      alert(response.razorpay_payment_id);
-      alert(response.razorpay_order_id);
-      alert(response.razorpay_signature);
-    },
-  };
+  ngOnInit(): void {
+    this.loadStripe();
+    this.user = this.login.getUser();
+    this.orderss = this.orders
+      .getOrderByUserId(this.user.id)
+      .subscribe((data: any) => {
+        this.orderss = data;
+        
+      });
+  }
 
   submit() {
     if (this.order.amount == '' || this.order.amount == null) {
@@ -61,32 +52,67 @@ export class SubscriptionComponent implements OnInit {
     this.orders.addOrder(this.order).subscribe(
       (data: any) => {
         this.order = {
-          QuizzId: '',
           amount: '',
+          premiumCourse: true,
         };
+        this.orders.setOrder(this.order.premiumCourse);
 
-        this.options.name = this.user.name;
-        this.options.amount = data['amount'] + '00';
-        this.options.handler = this.razorPayResponseHandler;
-        var rzp1 = new Razorpay(this.options);
-        rzp1.on('payment.failed', function (response: any) {
-          alert(response.error.code);
+        var handler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51L4gfeSIRvAaFQNQixc2Jwhu932YoRlyZDVeLsYzlaZW4XzYvZgOuHZ1khnIZOycPt72oQ8VVkxjFfc0ADC8ytPC00IkK1nl9w',
+          locale: 'auto',
+          token: function (token: any) {
+            // You can access the token ID with `token.id`.
+            // Get the token ID to your server-side code for use.
+            console.log(token);
+            Swal.fire(
+              'Congratulations!',
+              'Payment SuccessFully Done!',
+              'success'
+            );
+          },
         });
-        rzp1.open();
+
+        handler.open({
+          name: this.user.name,
+          email: this.user.email,
+          description: 'Payment Gateway',
+          amount: this.order.amount,
+        });
       },
 
-      (error) => {
-        console.log(error);
+      (error: any) => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Something Went Wrong!',
         });
+        console.log(error);
       }
     );
   }
 
-  razorPayResponseHandler(res: any) {
-    console.log(res);
+  loadStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      var s = window.document.createElement('script');
+      s.id = 'stripe-script';
+      s.type = 'text/javascript';
+      s.src = 'https://checkout.stripe.com/checkout.js';
+      s.onload = () => {
+        this.handler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51L4gfeSIRvAaFQNQixc2Jwhu932YoRlyZDVeLsYzlaZW4XzYvZgOuHZ1khnIZOycPt72oQ8VVkxjFfc0ADC8ytPC00IkK1nl9w',
+          locale: 'auto',
+          token: function (token: any) {
+            // You can access the token ID with `token.id`.
+            // Get the token ID to your server-side code for use.
+            console.log(token);
+            alert('Payment Success!!');
+          },
+        });
+      };
+
+      window.document.body.appendChild(s);
+    }
   }
 }
+
+

@@ -47,8 +47,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import {MatMenuModule} from '@angular/material/menu';
 import { SubscriptionComponent } from './pages/user/subscription/subscription.component';
-import { PremiumQuizzComponent } from './pages/user/premium-quizz/premium-quizz.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+
+
 
 
 
@@ -84,8 +85,8 @@ import { UserProfileComponent } from './pages/user/user-profile/user-profile.com
     InstructionsComponent,
     StartComponent,
     SubscriptionComponent,
-    PremiumQuizzComponent,
     UserProfileComponent,
+
 
 
 

@@ -1,119 +1,140 @@
-<div class="container" style="margin-top: 100px;">
+<div class="container" style="margin-top: 100px" *ngIf="!this.orderss[0]">
   <form (ngSubmit)="submit()">
-  <div class="row">
-    <div class="col-sm">
+    <div class="row">
+      <div class="col-sm">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              Basic Plan<mat-icon style="margin-left: 10px; color: #c0c0c0"
+                >payments</mat-icon
+              >
+            </mat-card-title>
 
-      <mat-card>
-        <mat-card-header>
+            <mat-card-subtitle>
+              <mat-label>Price:</mat-label>
+              <b>₹300</b>
 
-          <mat-card-title>
-            Basic Plan<mat-icon style="margin-left: 10px; color: #c0c0c0;">payments</mat-icon>
-          </mat-card-title>
+              <input
+                type="radio"
+                style="margin-left: 20px"
+                [value]="300"
+                name="amount"
+                [(ngModel)]="order.amount"
+              />
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <ul>
+              <li>3 Month Subscription</li>
+              <li>Premium Quizz for 3 Months</li>
+              <li>Practice Unlimited Quizzes for 3 Months</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-sm">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              Standard<mat-icon style="margin-left: 10px; color: #ce9761"
+                >payments</mat-icon
+              >
+            </mat-card-title>
 
-          <mat-card-subtitle>
-            <mat-label>Price:</mat-label>
-                 <b>₹300</b>
+            <mat-card-subtitle>
+              <mat-label>Price:</mat-label>
+              <b>₹500</b
+              ><input
+                type="radio"
+                style="margin-left: 20px"
+                [value]="500"
+                name="amount"
+                [(ngModel)]="order.amount"
+              />
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <ul>
+              <li>6 Months Subscription</li>
+              <li>Premium Quizz for 6 Months</li>
+              <li>Practice Unlimited Quizzes for 6 Months</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-sm">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              Premium<mat-icon style="margin-left: 10px; color: #ffd700"
+                >payments</mat-icon
+              >
+            </mat-card-title>
 
-                 <input
-                 type="radio"
-                 style="margin-left: 20px;"
-                 [value]="300"
-                 name="amount"
-                 [(ngModel)]="order.amount"
-               />
-          </mat-card-subtitle>
+            <mat-card-subtitle>
+              <mat-label>Price:</mat-label>
+              <b>₹1000</b
+              ><input
+                type="radio"
+                style="margin-left: 20px"
+                [value]="1000"
+                name="amount"
+                [(ngModel)]="order.amount"
+              />
+            </mat-card-subtitle>
+          </mat-card-header>
 
-
-        </mat-card-header>
-        <mat-card-content>
-          <ul>
-            <li>3 Month Subscription</li>
-            <li>Premium Quizz for 3 Months</li>
-            <li>Practice Unlimited Quizzes for 3  Months</li>
-          </ul>
-
-
-
-        </mat-card-content>
-
-
-      </mat-card>
+          <mat-card-content>
+            <ul>
+              <li>12 Months Subscription</li>
+              <li>Premium Quizz for 12 Months</li>
+              <li>Practice Unlimited Quizzes for 12 Months</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-    <div class="col-sm">
-   <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            Standard<mat-icon style="margin-left: 10px; color: #ce9761;">payments</mat-icon>
-          </mat-card-title>
+    <mat-card-actions class="text-center" style="margin-top: 40px">
+      <button type="submit" mat-raised-button color="primary">Proceed</button>
+    </mat-card-actions>
+  </form>
+</div>
 
-          <mat-card-subtitle>
-            <mat-label>Price:</mat-label>
-                 <b>₹500</b><input
-                 type="radio"
-                 style="margin-left: 20px;"
-                 [value]="500"
-                 name="amount"
-                 [(ngModel)]="order.amount"
-               />
-          </mat-card-subtitle>
+<div class="bootstrap-wrapper" *ngIf="this.orderss[0]">
+  <div class="container">
+    <div class="row" style="margin-top: 20px">
+      <div class="col-md-6 offset-md-3">
+        <div class="container text-center">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+                <mat-label> MEMBERSHIP & BILING: </mat-label>
+                <br />
+              </mat-card-title>
 
+              <mat-card-subtitle>
+                <b>Name:</b>{{ this.user.name }}<br />
+                <b>Email:</b> {{ this.user.email }}<br />
+                <b>Password:</b> *****
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-title> Billing Details </mat-card-title>
+            <mat-card-subtitle>
+              <mat-label>Your next billing date is:</mat-label>
 
-        </mat-card-header>
-        <mat-card-content>
-          <ul>
-            <li>6 Months Subscription</li>
-            <li>Premium Quizz for 6 Months</li>
-            <li>Practice Unlimited Quizzes for 6  Months</li>
-          </ul>
-
-
-
-        </mat-card-content>
-
-
-
-      </mat-card>
-    </div>
-    <div class="col-sm">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            Premium<mat-icon style="margin-left: 10px; color: #FFD700;">payments</mat-icon>
-          </mat-card-title>
-
-          <mat-card-subtitle>
-            <mat-label>Price:</mat-label>
-                 <b>₹1000</b><input
-                 type="radio"
-                 style="margin-left: 20px;"
-                 [value]="1000"
-                 name="amount"
-                 [(ngModel)]="order.amount"
-               />
-          </mat-card-subtitle>
-
-
-        </mat-card-header>
-
-        <mat-card-content>
-          <ul>
-            <li>12 Months Subscription</li>
-            <li>Premium Quizz for 12 Months</li>
-            <li>Practice Unlimited Quizzes for 12  Months</li>
-          </ul>
-
-
-
-        </mat-card-content>
-
-
-
-      </mat-card>
-
+            </mat-card-subtitle>
+             <mat-card-content>
+                  <mat-card-title>
+                    Plan Details
+                  </mat-card-title>
+                  <mat-card-subtitle>
+                    {{this.orderss[0].amount == 300 ? "Basic Plan" : this.orderss[0].amount == 500 ? "Standard Plan" : "Premium Plan"}}
+                  </mat-card-subtitle>
+                  <p>You will able to Upgrade Your Subscription before 10 days of your existing plan..</p>
+             </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
     </div>
   </div>
-  <mat-card-actions class="text-center" style="margin-top: 40px;">
-    <button type="submit" mat-raised-button color="primary">Proceed</button>
-  </mat-card-actions>
-</form>
 </div>

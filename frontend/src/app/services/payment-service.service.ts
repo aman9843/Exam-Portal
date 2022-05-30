@@ -5,19 +5,63 @@ import baseUrl from './helper';
 @Injectable({
   providedIn: 'root',
 })
+
 export class PaymentServiceService {
   constructor(private http: HttpClient) {}
 
   // Payment Details
 
-  // get Questions
-  public getOrder() {
-    return this.http.get(`${baseUrl}/api/order`);
-  }
 
   // Add Questions
 
   public addOrder(order: any) {
     return this.http.post(`${baseUrl}/api/order`, order);
+  }
+
+
+  public setOrder(premium:any) {
+    localStorage.setItem('premium',premium);
+    return true;
+
+  }
+
+  // get order details
+
+  public userLoggedIn() {
+    let tokenStr = localStorage.getItem('premium')
+    if(tokenStr == undefined || tokenStr == '' || tokenStr == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
+  //UserOrderRemove()
+
+  public userOrderRemove() {
+    localStorage.removeItem('premium')
+  }
+
+
+    // get Questions
+    public getOrderByUserId(id:any) {
+      return this.http.get(`${baseUrl}/api/order/${id}}`);
+    }
+
+
+
+
+// get Order
+  public getCurrentUserOrder() {
+    let userStr= localStorage.getItem('order');
+    if(userStr != null) {
+
+      return JSON.parse(userStr);
+
+    } else {
+
+      return null;
+    }
   }
 }
