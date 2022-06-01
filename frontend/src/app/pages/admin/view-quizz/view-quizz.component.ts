@@ -18,11 +18,11 @@ export class ViewQuizzComponent implements OnInit {
 
     this.quizz.getQuizz().subscribe((data:any) => {
       this.quiz=data;
-      console.log(this.quiz)
+
 
     },
     (error) => {
-      console.log(error)
+
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -48,11 +48,11 @@ export class ViewQuizzComponent implements OnInit {
         this.quizz.deleteQuiz(qid).subscribe(
           (data:any) => {
             this.quiz = this.quiz.filter((quizzes:any)=> quizzes.id != qid)
-            console.log(data,"Deleted")
+
             Swal.fire('Success','Quiz Deleted','success')
           },
           (error)=>{
-            console.log(error);
+           
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
@@ -70,5 +70,5 @@ export class ViewQuizzComponent implements OnInit {
 
   }
 
- 
+
 }

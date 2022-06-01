@@ -22,20 +22,20 @@ export class UpdateQuizzComponent implements OnInit {
     this.quizz.getQuiz(this.id).subscribe(
       (data)=> {
         this.quiz=data;
-        console.log(data)
+
       },
       (error)=> {
-        console.log(error);
+
 
       }
     )
     this.cat.getCategories().subscribe(
       (data: any) => {
-        console.log(data);
+
         this.categories = data;
       },
       (error) => {
-        console.log(error);
+
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -50,12 +50,12 @@ export class UpdateQuizzComponent implements OnInit {
 
       (data:any)=>{
         this.quiz = data;
-        console.log(data)
+
         Swal.fire('Congratulations!', 'Your Data Have Been Updated!', 'success');
         this.router.navigate(['/admin/viewQuizz'])
       },
       (error) => {
-        console.log(error)
+        
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

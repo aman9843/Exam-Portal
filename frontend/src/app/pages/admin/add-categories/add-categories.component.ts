@@ -38,14 +38,13 @@ export class AddCategoriesComponent implements OnInit {
        (data:any) => {
          this.category.title='',
          this.category.description=''
-         console.log(data);
+
           Swal.fire('Congratulations!', 'Your Data Have Been Added!', 'success');
           this.router.navigate(['/admin/categories'])
 
 
        },
        (error) => {
-         console.log(error)
          Swal.fire({
           icon: 'error',
           title: 'Oops...',

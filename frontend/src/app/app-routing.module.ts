@@ -9,7 +9,6 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { AdminGuard } from './services/admin.guard';
 import { UserGuard } from './services/user.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoriesComponent } from './pages/admin/add-categories/add-categories.component';
 import { ViewQuizzComponent } from './pages/admin/view-quizz/view-quizz.component';
@@ -23,6 +22,8 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
 import { StartComponent } from './pages/user/start/start.component';
 import { SubscriptionComponent } from './pages/user/subscription/subscription.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import { OrdersComponent } from './pages/admin/orders/orders.component';
+import { UpdateUserComponent } from './pages/user/update-user/update-user.component';
 
 
 const routes: Routes = [
@@ -53,12 +54,7 @@ const routes: Routes = [
    canActivate:[AdminGuard],
 
    children:[
-     {
-       path:'',
-       component:WelcomeComponent,
-       pathMatch:'full'
 
-     },
      {
        path:'profile',
        component:ProfileComponent,
@@ -84,6 +80,13 @@ const routes: Routes = [
        component:AddQuizzComponent,
        pathMatch:'full'
      },
+     {
+       path:'orders',
+       component:OrdersComponent,
+       pathMatch:'full'
+
+
+      },
      {
        path:'quizz/:id',
        component:UpdateQuizzComponent,
@@ -122,6 +125,21 @@ const routes: Routes = [
           component:InstructionsComponent,
           pathMatch:'full'
         },
+        {
+          path:'userProfile/:id',
+          component:UserProfileComponent,
+          pathMatch:'full',
+          canActivate:[UserGuard]
+        },
+        {
+        path:'update/:id',
+        component:UpdateUserComponent,
+        pathMatch:'full',
+        canActivate:[UserGuard]
+
+
+        },
+
 
 
 
@@ -139,12 +157,7 @@ const routes: Routes = [
     pathMatch:'full',
     canActivate:[UserGuard]
   },
-  {
-    path:'userProfile/:id',
-    component:UserProfileComponent,
-    pathMatch:'full',
-    canActivate:[UserGuard]
-  },
+
 
 
 

@@ -27,7 +27,7 @@ export class AddQuizzComponent implements OnInit {
   ngOnInit(): void {
     this.cat.getCategories().subscribe(
       (data: any) => {
-        console.log(data);
+
         this.categories = data;
       },
       (error) => {
@@ -62,7 +62,7 @@ export class AddQuizzComponent implements OnInit {
           premium:true,
           CategoryId:''
 };
-        console.log(data);
+      
          Swal.fire('Congratulations!', 'Your Data Have Been Added!', 'success');
          this.router.navigate(['/admin/viewQuizz'])
       },

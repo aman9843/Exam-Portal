@@ -27,10 +27,10 @@ export class NavbarComponent implements OnInit {
     this.orders = this.order.getOrderByUserId(this.user.id).subscribe(
       (data:any) => {
         this.orders = data
-        console.log(this.orders)
+
       },
       (error) => {
-        console.log(error)
+       
       }
     );
   }

@@ -17,18 +17,18 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
 
     this.id = this.router.snapshot.params['id']
-    console.log(this.id)
+
     this.user = this.loginServices.getUser();
-    console.log(this.user)
+
 
 
     this.orders = this.order.getOrderByUserId(this.id).subscribe(
       (data:any) => {
         this.orders = data
-        console.log(this.orders)
+
       },
       (error) => {
-        console.log(error)
+        
       }
     );
 

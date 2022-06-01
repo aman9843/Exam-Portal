@@ -120,7 +120,7 @@
             </mat-card-header>
             <mat-card-title> Billing Details </mat-card-title>
             <mat-card-subtitle>
-              <mat-label>Your next billing date is:</mat-label>
+              <mat-label>Your next billing date is after: <b>{{this.orderss[0].amount == 300 ? "3 Months" : this.orderss[0].amount == 500 ? "6 Months" : "1 Year"}}</b></mat-label>
 
             </mat-card-subtitle>
              <mat-card-content>

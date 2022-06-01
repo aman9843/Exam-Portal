@@ -10,7 +10,8 @@ const {protect,admin} = require('../middleware/authmiddleware')
 router.route('/register').post(registerNewUser)
 router.route('/login').post(login)
 router.route('/profile').get(protect,getUser)
-router.route('/profile/:id').delete(protect,admin,deleteUser).put(protect,updateUserById)
+
+router.route('/profile/:id').delete(protect,admin,deleteUser).put(protect,updateUserById).get(protect,getUser)
 
 
 

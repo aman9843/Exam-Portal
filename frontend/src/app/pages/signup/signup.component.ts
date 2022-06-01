@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   formSubmit() {
-    console.log(this.user);
+
     if (this.user.name == '' || this.user.name == null) {
       Swal.fire({
         icon: 'error',
@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
     // add user
     this.userServices.addUser(this.user).subscribe(
       (data) => {
-        console.log(data);
+
         Swal.fire(
           'Congratulations!',
           'Regsitered SuccessFully!',
@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/login'])
       },
       (error) => {
-        console.log(error);
+     
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

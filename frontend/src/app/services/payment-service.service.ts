@@ -25,6 +25,18 @@ export class PaymentServiceService {
 
   }
 
+  //get All Orders
+
+  public getAllOrders() {
+    return this.http.get(`${baseUrl}/api/order`)
+  }
+
+  // delete orders via admin
+
+  public deleteOrder(id:any) {
+    return this.http.delete(`${baseUrl}/api/order/${id}`)
+  }
+
   // get order details
 
   public userLoggedIn() {

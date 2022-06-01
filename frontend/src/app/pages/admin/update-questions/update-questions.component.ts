@@ -22,11 +22,11 @@ export class UpdateQuestionsComponent implements OnInit {
     this.questions.getQuestionsById(this.id).subscribe(
       (data:any) => {
         this.question = data
-        console.log(data)
+
 
       },
       (error)=> {
-        console.log(error);
+
 
       }
     )
@@ -34,11 +34,11 @@ export class UpdateQuestionsComponent implements OnInit {
 
     this.quizz.getQuizz().subscribe(
       (data: any) => {
-        console.log(data);
+
         this.quizzes = data;
       },
       (error) =>{
-        console.log(error);
+     
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

@@ -19,11 +19,11 @@ export class InstructionsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.quiz.getQuiz(this.id).subscribe(
       (data:any) => {
-        console.log(data);
+
         this.quizz = data
       },
       (error) => {
-        console.log(error);
+      
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

@@ -22,13 +22,12 @@ export class QuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.title = this.route.snapshot.params['title'];
-    console.log(this.id);
-    console.log(this.title);
+
 
     this.questions.getQuestionsByCategoryId(this.id).subscribe(
       (data: any) => {
         this.question = data;
-        console.log(this.question);
+
       },
       (error) => {
         console.log(error);
@@ -55,11 +54,11 @@ export class QuestionsComponent implements OnInit {
         this.questions.deleteQuestions(id).subscribe(
           (data: any) => {
             this.question = this.question.filter((q: any) => q.id !== id);
-            console.log(data, 'Deleted');
+
             Swal.fire('Success', 'Quiz Deleted', 'success');
           },
           (error: any) => {
-            console.log(error);
+           
             Swal.fire({
               icon: 'error',
               title: 'Oops...',

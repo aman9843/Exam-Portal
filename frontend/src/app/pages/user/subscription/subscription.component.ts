@@ -35,7 +35,7 @@ export class SubscriptionComponent implements OnInit {
       .getOrderByUserId(this.user.id)
       .subscribe((data: any) => {
         this.orderss = data;
-        
+
       });
   }
 
@@ -63,13 +63,15 @@ export class SubscriptionComponent implements OnInit {
           token: function (token: any) {
             // You can access the token ID with `token.id`.
             // Get the token ID to your server-side code for use.
-            console.log(token);
+
             Swal.fire(
               'Congratulations!',
               'Payment SuccessFully Done!',
               'success'
-            );
+            )
           },
+
+
         });
 
         handler.open({
@@ -86,7 +88,7 @@ export class SubscriptionComponent implements OnInit {
           title: 'Oops...',
           text: 'Something Went Wrong!',
         });
-        console.log(error);
+
       }
     );
   }
@@ -104,7 +106,7 @@ export class SubscriptionComponent implements OnInit {
           token: function (token: any) {
             // You can access the token ID with `token.id`.
             // Get the token ID to your server-side code for use.
-            console.log(token);
+         
             alert('Payment Success!!');
           },
         });

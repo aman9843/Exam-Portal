@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   formSubmit() {
-    console.log(this.user);
+
     if (this.user.email.trim() == '' || this.user.email == null) {
       Swal.fire({
         icon: 'error',
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginUser(this.user).subscribe(
       (data: any) => {
-        console.log(data);
+     
 
         this.loginService.generateToken(data.token);
 
@@ -44,10 +44,11 @@ export class LoginComponent implements OnInit {
         this.loginService.getCurrentUser().subscribe((user: any) => {
           this.loginService.setUser(user);
 
-          console.log(user);
+
 
           if (this.loginService.getUserRole() === false) {
             this.router.navigate(['/user/0']);
+
             this.loginService.loginSbuject.next(true);
           } else if (this.loginService.getUserRole() === true) {
             this.router.navigate(['/admin/profile']);
@@ -62,17 +63,17 @@ export class LoginComponent implements OnInit {
 
        this.order.getOrderByUserId(data.id).subscribe(
          (data:any) => {
-           console.log(data)
+
            this.order.setOrder(data[0].premiumCourse)
          },
          (error) => {
-           console.log(error)
+
          }
        )
 
       },
       (error) => {
-        console.log(error);
+
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

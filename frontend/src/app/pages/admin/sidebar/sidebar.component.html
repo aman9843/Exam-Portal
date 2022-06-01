@@ -1,16 +1,52 @@
-<div class="text-center sidebar" style="margin-top: 20px;" >
-<mat-card>
-  <mat-action-list>
-    <div mat-subheader style="color: black;">Menu<mat-icon style="margin-left: 10px; color: black;" mat-list-icon>dashboard</mat-icon></div>
-    <button mat-list-item  routerLink="/admin"><mat-icon  mat-list-icon >home</mat-icon>Home</button>
-    <button  mat-list-item routerLink="/admin/profile"><mat-icon routerLinkActive="active" mat-list-icon  >account_box</mat-icon>Profile</button>
-    <button mat-list-item routerLink="/admin/categories"><mat-icon mat-list-icon routerLinkActive="active">list</mat-icon>Categories</button>
-    <button mat-list-item routerLink="/admin/addCategories"><mat-icon mat-list-icon routerLinkActive="active" >add_circle_outline</mat-icon>AddCategories</button>
-    <button mat-list-item routerLink="/admin/viewQuizz"><mat-icon mat-list-icon routerLinkActive="active">quiz</mat-icon>Quizz</button>
-    <button mat-list-item routerLink="/admin/addQuizz"><mat-icon mat-list-icon routerLinkActive="active">add</mat-icon>AddQuizz</button>
+<div class="nav__cont">
+<mat-card class="nav">
+  <mat-action-list class="nav__items">
+    <button mat-list-item class="a" routerLink="/"><mat-icon  mat-list-icon >home</mat-icon>Home</button>
+    <button mat-list-item class="a"routerLink="/admin/profile"><mat-icon routerLinkActive="active" mat-list-icon  >account_box</mat-icon>Profile</button>
+    <button mat-list-item class="a" routerLink="/admin/categories"><mat-icon mat-list-icon routerLinkActive="active">list</mat-icon>Categories</button>
+    <button mat-list-item class="a" routerLink="/admin/addCategories"><mat-icon mat-list-icon routerLinkActive="active" >add_circle_outline</mat-icon>AddCategories</button>
+    <button mat-list-item class="a" routerLink="/admin/viewQuizz"><mat-icon mat-list-icon routerLinkActive="active">quiz</mat-icon>Quizz</button>
+    <button mat-list-item class="a"  routerLink="/admin/addQuizz"><mat-icon mat-list-icon routerLinkActive="active">add</mat-icon>AddQuizz</button>
+    <button mat-list-item class="a" routerLink="/admin/orders"><mat-icon mat-list-icon routerLinkActive="active">visibility</mat-icon>Orders</button>
   </mat-action-list>
 
 </mat-card>
 </div>
+
+<!-- <nav class="nav__cont">
+  <ul class="nav">
+    <li class="nav__items">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        <use xlink:href="#home"></use>
+      </svg>
+      <a href="">Home</a>
+    </li>
+
+    <li class="nav__items ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <use xlink:href="#search"></use>
+      </svg>
+      <a href="">Search</a>
+    </li>
+
+    <li class="nav__items ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <use xlink:href="#map"></use>
+      </svg>
+     <a href="">Map</a>
+    </li>
+
+    <li class="nav__items ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 35.6">
+        <use xlink:href="#planner"></use></svg>
+      <a href="">Planner</a>
+    </li>
+
+  </ul>
+</nav>
+ -->
+
+
+
 
 

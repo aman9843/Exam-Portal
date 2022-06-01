@@ -1,0 +1,59 @@
+
+
+<mat-card style="margin-top: 20px;  margin-left: 50px;">
+  <h3 mat-subheader class="text-center">Update Profile</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form *ngIf="user" (ngSubmit)="update(id)">
+          <mat-form-field class="width" appearance="fill">
+            <mat-label>Enter The Name</mat-label>
+            <input
+              autofocus
+              required
+              #name="ngModel"
+              [(ngModel)]="user.name"
+              type="text"
+              name="name"
+              matInput
+              placeholder="Enter your Name"
+            />
+            <mat-error *ngIf="name.invalid && (name.errors && name.errors['required'])"> Name is Required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="width" appearance="fill">
+            <mat-label>Enter The Email</mat-label>
+            <textarea
+              autofocus
+              required
+              #email="ngModel"
+              [(ngModel)]="user.email"
+              type="text"
+              name="email"
+              rows="4"
+              matInput
+              placeholder="Enter your Email"
+            ></textarea>
+            <mat-error *ngIf="email.invalid && (email.errors && email.errors['required'])"> Email is Required</mat-error>
+          </mat-form-field>
+
+
+
+
+             <mat-label >Status</mat-label>
+          <mat-slide-toggle color="primary" name="enabled" style="margin-left: 10px;" [checked]="false" [(ngModel)]="user.enabled"></mat-slide-toggle>
+
+
+          <br/>
+
+
+          <mat-card-actions class="text-center">
+            <button type="submit" mat-raised-button color="primary">Update</button>
+          </mat-card-actions>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</mat-card>
+<app-scroll></app-scroll>

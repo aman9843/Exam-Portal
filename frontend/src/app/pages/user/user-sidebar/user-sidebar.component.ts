@@ -15,9 +15,9 @@ export class UserSidebarComponent implements OnInit {
   ngOnInit(): void {
     this.cat.getCategories().subscribe((data:any) => {
       this.category = data;
-      console.log(this.category)
+
     },(error)=> {
-      console.log(error)
+     
 
       Swal.fire({
         icon: 'error',

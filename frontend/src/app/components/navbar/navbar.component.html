@@ -60,17 +60,17 @@
  <button mat-icon-button class="example-icon favorite-icon" *ngIf="!isLoggedIn"  routerLinkActive="active" routerLink="/login" aria-label="Example icon-button with heart icon">
    <mat-icon>login</mat-icon>
  </button>
- <button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == false" [routerLink]="'userProfile/'+user.id" aria-label="Example icon-button with share icon">
+ <button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == false" [routerLink]="'/user/userProfile/'+user.id" aria-label="Example icon-button with share icon">
 <mat-icon>account_circle_full</mat-icon>
 </button>
-<button  mat-icon-button class="example-icon"  *ngIf="isLoggedIn && user.isAdmin == false" [routerLink]="'userProfile/'+user.id" style="margin-right: 40px;" >{{user.name}} <mat-icon class="text-center" *ngIf="this.orders[0]" style="color: #D4AF37 ;"
+<button  mat-icon-button class="example-icon"  *ngIf="isLoggedIn && user.isAdmin == false" [routerLink]="'/user/userProfile/'+user.id" style="margin-right: 40px;" >{{user.name}} <mat-icon class="text-center" *ngIf="this.orders[0]" style="color: #D4AF37 ;"
               >workspace_premium</mat-icon
             ></button>
 
 <button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == true"   routerLink="/admin/profile"  aria-label="Example icon-button with share icon">
   <mat-icon>admin_panel_settings</mat-icon>
 </button>
-<button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == true" routerLink="/admin/profile" style="margin-right: 10px;" >{{user.name}</button>
+<button mat-icon-button class="example-icon" *ngIf="isLoggedIn && user.isAdmin == true" routerLink="/admin/profile" style="margin-right: 10px;" >{{user.name}}</button>
 
  <button mat-icon-button class="example-icon" *ngIf="!isLoggedIn" routerLinkActive="active" routerLink="/signup" aria-label="Example icon-button with share icon">
   <mat-icon>app_registration</mat-icon>

@@ -1,18 +1,18 @@
-<div class="sidebar" style="margin-top: 20px">
-  <mat-card>
-    <mat-action-list>
-      <div mat-subheader style="color: black">
+<div class="nav__cont">
+  <mat-card class="nav">
+    <mat-action-list class="nav__items">
+      <!-- <div mat-subheader style="color: black">
         All Categories<mat-icon style="margin-left: 10px; color: black" mat-list-icon
           >dashboard</mat-icon
         >
-      </div>
-      <button mat-list-item routerLink="/user/0">
-        All Quizzes<mat-icon mat-list-icon
+      </div> -->
+      <button mat-list-item routerLink="/user/0" class="a"  >
+        All Quizzes<mat-icon routerLinkActive="active" mat-list-icon
           >quizz</mat-icon
         >
       </button>
-      <button mat-list-item [routerLink]="'/user/'+c.id"  *ngFor="let c of category">
-        <mat-icon mat-list-icon>school</mat-icon>{{c.title}}
+      <button mat-list-item class="a" [routerLink]="'/user/'+c.id" *ngFor="let c of category">
+        <mat-icon routerLinkActive="active" mat-list-icon>school</mat-icon>{{c.title}}
       </button>
 
     </mat-action-list>

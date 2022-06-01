@@ -20,18 +20,16 @@ export class LoadQuizzComponent implements OnInit {
   ngOnInit(): void {
 
      this.orders=this.order.userLoggedIn()
-     console.log(this.orders)
-
     this.route.params.subscribe((params) => {
       this.id = params['id'];
       if (this.id == 0) {
         this.quiz.getQuizz().subscribe(
           (data: any) => {
             this.quizz = data;
-            console.log(this.quizz);
+
           },
           (error) => {
-            console.log(error);
+
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
@@ -41,15 +39,15 @@ export class LoadQuizzComponent implements OnInit {
         );
       } else {
 
-        console.log('Load Specific Quizz');
+
         this.quiz.getQuizzByCategoryId(this.id).subscribe(
           (data:any) => {
             this.quizz = data;
-            console.log(this.quizz);
+
 
           },
           (error) => {
-            console.log(error);
+        
             Swal.fire({
               icon: 'error',
               title: 'Oops...',

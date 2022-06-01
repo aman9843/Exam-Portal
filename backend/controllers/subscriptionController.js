@@ -83,9 +83,24 @@ const getOrderByUserId = asyncHandler(async (req, res) => {
   }
 });
 
+
+// cancel subscription via admin
+const deleteOrder = asyncHandler(async (req, res) => {
+  const quizz = await Order.findByPk(req.params.id);
+  if (quizz) {
+    await quizz.destroy();
+    res.json({ message: "Subscription Canceled" });
+  } else {
+    res.status(404);
+    throw new Error("Error in Cancelling");
+  }
+});
+
+
 module.exports = {
   createOrder,
   getAllOrder,
   getOrderById,
   getOrderByUserId,
+  deleteOrder
 };

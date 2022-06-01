@@ -50,3 +50,6 @@ a {
 .mat-raised-button :focus {
    outline: none !important
  }
+ .mat-table {
+  background-color: #e0ffff;
+}

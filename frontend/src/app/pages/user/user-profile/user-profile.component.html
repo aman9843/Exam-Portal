@@ -78,7 +78,7 @@
             </div>
           </mat-card-content>
           <mat-card-actions class="text-center">
-            <button mat-raised-button color="primary">Update</button>
+            <button mat-raised-button [routerLink]="'/user/update/' + user.id" color="primary">Update</button>
             <button mat-raised-button *ngIf="this.orders[0] == null" routerLink="/subscription" color="accent">Subscribe</button>
           </mat-card-actions>
         </mat-card>

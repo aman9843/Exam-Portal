@@ -36,7 +36,7 @@ export class StartComponent implements OnInit {
   ngOnInit(): void {
     this.preventBack();
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
+
     this.order =this.orders.userLoggedIn()
     this.loadQuestions();
   }
@@ -44,7 +44,7 @@ export class StartComponent implements OnInit {
   loadQuestions() {
     this.questions.getQuestionsByCategoryId(this.id).subscribe(
       (data: any) => {
-        console.log(data);
+
         this.question = data;
         this.timer = this.question.length * 10 * 60;
 
@@ -52,12 +52,12 @@ export class StartComponent implements OnInit {
           q['givenAnswers'] = '';
         });
 
-        console.log(this.question);
+
         this.startTimer();
       },
 
       (error) => {
-        console.log(error);
+      
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -89,9 +89,7 @@ export class StartComponent implements OnInit {
         this.submitDirect();
       }
 
-      console.log('Correct Answers:' + this.correctAnswers);
-      console.log('Marks Got:' + this.marksGot);
-      console.log('Attempt', this.attemp);
+
     });
   }
 

@@ -3,11 +3,11 @@ const router = express.Router()
 
 
 const {protect,admin} = require('../middleware/authmiddleware')
-const {createOrder, getOrderByUserId} = require('../controllers/subscriptionController')
+const {createOrder, getOrderByUserId, getAllOrder, deleteOrder} = require('../controllers/subscriptionController')
 
 
-router.route('/').post(protect,createOrder)
-router.route('/:id').get(protect,getOrderByUserId)
+router.route('/').post(protect,createOrder).get(protect,admin,getAllOrder)
+router.route('/:id').get(protect,getOrderByUserId).delete(protect,admin,deleteOrder)
 
 
 
